@@ -1,0 +1,23 @@
+:host {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100dvh;
+    width: 100dvw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+}
+
+input {
+    margin-bottom: 8px;
+}
+
+.modal {
+    min-width: 650px;
+}
+
+.image-error {
+    margin-top: 12px;
+}

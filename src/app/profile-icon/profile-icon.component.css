@@ -1,0 +1,236 @@
+.profile-container {
+    position: relative;
+    display: inline-block;
+}
+
+.icon {
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+.profile-menu {
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 270px;
+    background: white;
+    border: 1px solid #d8d8d8;
+    border-radius: 10px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    padding: 1rem;
+    margin-top: 24px;
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.profile-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 0.75rem;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+    font-family: "Montserrat", sans-serif;
+}
+
+.user-name {
+    font-weight: bold;
+    font-family: "Montserrat", sans-serif;
+    margin-bottom: 4px;
+}
+
+.user-email {
+    font-size: 0.85rem;
+    color: gray;
+    text-decoration: underline;
+}
+
+.profile-options {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.profile-options li {
+    display: flex;
+    align-items: center;
+    padding: 4px 0;
+    margin-top: 4px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.2s;
+}
+
+.profile-options li p {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+    margin-left: 8px;
+}
+
+.profile-options li:hover {
+    background-color: #f5f5f5;
+}
+
+.icon-circle {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    color: white;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 0.75rem;
+}
+
+.icon-container {
+    background-color: #8d8d8d;
+    border-radius: 50%;
+}
+
+.icon-container span {
+    padding: 6px;
+    color: #383838;
+    font-size: 1.85em;
+}
+
+.delete {
+    font-size: 1.85em;
+    padding: 6px;
+    color: var(--color-button-cancel);
+}
+
+.profile-menu:focus-visible {
+    outline: 3px solid var(--color-primario);
+    outline-offset: 2px;
+}
+
+.profile-container button.icon {
+    all: unset;
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    display: inline-block;
+    padding: 0;
+    transition: transform 0.2s ease;
+}
+
+.profile-container button.icon:hover {
+    transform: scale(1.05);
+}
+
+.profile-container button.icon:focus-visible {
+    transform: scale(1.05);
+}
+
+.profile-avatar:focus-visible {
+    outline: 3px solid var(--color-primario);
+    outline-offset: 2px;
+}
+
+.user-name:focus-visible {
+    outline: 2px solid var(--color-primario);
+    outline-offset: 2px;
+    border-radius: 2px;
+}
+
+.user-email a:focus-visible {
+    outline: 2px solid var(--color-primario);
+    outline-offset: 2px;
+    border-radius: 2px;
+}
+
+.profile-options:focus-visible {
+    outline: 3px solid var(--color-primario);
+    outline-offset: 2px;
+    border-radius: 3px;
+}
+
+.profile-options li:focus-visible {
+    outline: 2px solid var(--color-primario);
+    outline-offset: 2px;
+    background-color: #eaeaea;
+}
+
+.profile-label {
+    position: absolute;
+    top: 50%;
+    right: 75px;
+    transform: translateY(-50%);
+    background-color: #ffffff;
+    border: 1px solid #d8d8d8;
+    color: var(--color-subtitulos);
+    padding: 6px 12px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 1em;
+    font-weight: 500;
+    border-radius: 6px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
+    margin-left: 8px;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.profile-container:hover .profile-label,
+.profile-label.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+@media (max-width: 1000px) {
+    .profile-menu {
+        width: 60vw;
+        right: 2vw;
+        max-height: 60vh;
+        overflow-y: auto;
+        scrollbar-width: thin;
+    }
+
+    .profile-menu::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    .profile-avatar {
+        width: 40px;
+        height: 40px;
+    }
+
+    .profile-container button.icon,
+    .profile-container .icon {
+        width: 48px;
+        height: 48px;
+    }
+
+    .profile-menu::-webkit-scrollbar-thumb {
+        background-color: #ccc;
+        border-radius: 4px;
+    }
+
+    .profile-menu::-webkit-scrollbar-track {
+        background-color: transparent;
+    }
+
+    .profile-label {
+        display: none;
+    }
+}

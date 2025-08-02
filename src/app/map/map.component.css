@@ -1,0 +1,195 @@
+mgl-map {
+    height: 100vh;
+    width: 100vw;
+}
+
+.popup-bubble {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(#d8d8d8, #395371 77%, #0a2c53 100%);
+    color: white;
+    border-radius: 50% 50% 50% 0;
+    transform: rotate(-45deg);
+    position: relative;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    margin-bottom: 15px;
+}
+
+.popup-bubble::after {
+    content: "";
+    position: absolute;
+    bottom: -18px;
+    left: -5px;
+    transform: rotate(45deg) translateX(-50%);
+    width: 30px;
+    height: 10px;
+    background: rgba(10, 44, 83, 0.8);
+    filter: blur(4px);
+    border-radius: 50%;
+    z-index: -1;
+}
+
+.plus-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 35px;
+    font-weight: bold;
+    background: #909ead;
+    border-radius: 50%;
+    padding: 5px;
+    color: #d8d8d8;
+}
+
+::ng-deep .mapboxgl-popup-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    background: transparent;
+    box-shadow: none;
+}
+
+::ng-deep .mapboxgl-popup-tip {
+    display: none;
+}
+
+::ng-deep .mapboxgl-popup-close-button {
+    display: none;
+}
+
+app-map-types-list {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    z-index: 1000;
+}
+
+app-search-bar {
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+}
+
+app-profile-icon {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    z-index: 1000;
+}
+
+app-login-button {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    z-index: 1000;
+}
+
+.popup-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    transform: rotate(45deg);
+    padding: 3px 0px 0px 7.5px;
+}
+
+.popup-location {
+    background: linear-gradient(#71bb75, #1b501f 77%, #142c16 100%);
+}
+
+::ng-deep .mapboxgl-ctrl-top-right .mapboxgl-ctrl {
+    margin: 5px 5px;
+}
+
+::ng-deep .mapboxgl-ctrl-top-right {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 10;
+    right: unset;
+    top: unset;
+}
+
+::ng-deep .mapboxgl-ctrl-group {
+    display: flex;
+    background-color: var(--color-button);
+    box-shadow: none;
+    border-radius: 8px !important;
+    transition: box-shadow 0.8s ease, background-color 0.8s ease;
+}
+
+::ng-deep .mapboxgl-ctrl-group:hover {
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: var(--color-button-hover);
+}
+
+/* tomar solo el ultimo boton */
+::ng-deep .mapboxgl-ctrl-group:last-child:hover {
+    background-color: var(--color-button);
+}
+
+::ng-deep .mapboxgl-ctrl-group:not(:empty) {
+    box-shadow: unset;
+}
+
+::ng-deep .mapboxgl-ctrl-group button + button {
+    border-top: unset;
+}
+
+app-button-list-locations {
+    position: absolute;
+    bottom: 35px;
+    right: 15px;
+    z-index: 1000;
+}
+
+app-button-add-location {
+    position: absolute;
+    bottom: 115px;
+    right: 15px;
+    z-index: 1000;
+}
+
+::ng-deep .mapboxgl-ctrl-group button {
+    border: none;
+    border-radius: 8px !important;
+    margin: 4px 4px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+    background-color: var(--color-button);
+    transition: background-color 0.3s ease;
+    width: 48px;
+    height: 48px;
+}
+
+::ng-deep .mapboxgl-ctrl-group button:hover {
+    background-color: var(--color-button-hover) !important;
+}
+
+::ng-deep .mapboxgl-ctrl-icon {
+    background-size: 85% !important;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: brightness(1) contrast(1.2) saturate(1.5) grayscale(0.2)
+        invert(100%);
+    transition: filter 0.3s ease;
+}
+
+::ng-deep .mapboxgl-ctrl-icon:hover {
+    filter: brightness(0.2) contrast(1) saturate(1) grayscale(0) invert(100%);
+}

@@ -1,0 +1,26 @@
+<div class="backdrop" (click)="cancel()" tabindex="-1" aria-hidden="true">
+    <div [@fadeInOut] class="modal-content" role="dialog" aria-modal="true">
+        <button
+            class="button"
+            (click)="goToLocationDetails()"
+            tabindex="0"
+            [attr.aria-label]="'Más información sobre ' + location?.name"
+        >
+            MÁS INFORMACIÓN
+        </button>
+
+        <div>
+            <div
+                class="modal"
+                role="dialog"
+                aria-labelledby="modal-title"
+                aria-describedby="modal-desc"
+                (click)="$event.stopPropagation()"
+                tabindex="0"
+            >
+                <h1 id="modal-title">{{ location?.name }}</h1>
+                <p id="modal-desc">{{ location?.address }}</p>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,24 @@
+<main class="welcome-container fade-in" [style.backgroundImage]="'url(' + currentImage + ')'"
+    aria-label="Bienvenida a la aplicación Geographia">
+    <div class="overlay" aria-hidden="true"></div>
+
+    <section class="content">
+        <h1 class="app-title" tabindex="0">GEOGRAPHIA</h1>
+
+        <p class="subtitle" tabindex="0">
+            Una plataforma <span class="highlight">colaborativa</span> para
+            registrar, georeferenciar y compartir datos
+            <span class="highlight">medioambientales</span> y
+            <span class="highlight">territoriales</span> en Argentina.
+        </p>
+
+        <p class="branding" aria-hidden="true" tabindex="0">
+            “Cartografiando el territorio desde el conocimiento colectivo.”
+        </p>
+
+        <button class="button button-welcome" (click)="map()" type="button"
+            aria-label="Descubre la plataforma Geographia apretando este botón.">
+            DESCUBRE
+        </button>
+    </section>
+</main>

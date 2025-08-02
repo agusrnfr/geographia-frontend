@@ -1,0 +1,108 @@
+<div class="backdrop" (click)="cancelEdit()" (keydown.escape)="cancelEdit()">
+    <div
+        cdkTrapFocus
+        class="modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modal-title"
+        aria-describedby="modal-description"
+        (click)="$event.stopPropagation()"
+    >
+        <h1
+            id="modal-title"
+            style="margin-bottom: 2px"
+            tabindex="0"
+            #firstFocusElement
+        >
+            PRIVACIDAD
+        </h1>
+        <p id="modal-description" class="information-fields" tabindex="0">
+            Configurá qué datos deseás compartir.
+        </p>
+
+        <form [formGroup]="privacyForm" (ngSubmit)="onSubmit()">
+            <section aria-labelledby="location-title">
+                <h3 id="location-title">LOCACIÓN</h3>
+                <div class="form-row">
+                    <label
+                        class="switch"
+                        aria-label="Activar o desactivar compartir mi locación actual"
+                    >
+                        <input
+                            type="checkbox"
+                            formControlName="show_location"
+                            [attr.aria-checked]="
+                                privacyForm.get('show_location')?.value
+                            "
+                        />
+                        <span class="slider round"></span>
+                    </label>
+                    <p>Compartir mi locación actual</p>
+                </div>
+            </section>
+
+            <section aria-labelledby="birthdate-title">
+                <h3 id="birthdate-title">FECHA DE NACIMIENTO</h3>
+                <div class="form-row">
+                    <label
+                        class="switch"
+                        aria-label="Activar o desactivar compartir mi fecha de nacimiento"
+                    >
+                        <input
+                            type="checkbox"
+                            formControlName="show_birth_date"
+                            [attr.aria-checked]="
+                                privacyForm.get('show_birth_date')?.value
+                            "
+                        />
+                        <span class="slider round"></span>
+                    </label>
+                    <p>Compartir mi fecha de nacimiento</p>
+                </div>
+            </section>
+
+            <section aria-labelledby="email-title">
+                <h3 id="email-title">CORREO ELECTRÓNICO</h3>
+                <div class="form-row">
+                    <label
+                        class="switch"
+                        aria-label="Activar o desactivar compartir mi correo electrónico"
+                    >
+                        <input
+                            type="checkbox"
+                            formControlName="show_email"
+                            [attr.aria-checked]="
+                                privacyForm.get('show_email')?.value
+                            "
+                        />
+                        <span class="slider round"></span>
+                    </label>
+                    <p>Compartir mi correo electrónico</p>
+                </div>
+            </section>
+
+            <p *ngIf="errorMessage" class="error" role="alert" tabindex="0">
+                {{ errorMessage }}
+            </p>
+
+            <div class="buttons">
+                <button
+                    class="button"
+                    type="submit"
+                    [disabled]="privacyForm.invalid"
+                    aria-label="Guardar configuración de privacidad"
+                >
+                    Guardar
+                </button>
+                <button
+                    class="button cancel"
+                    type="button"
+                    (click)="cancelEdit()"
+                    aria-label="Cancelar y cerrar configuración de privacidad"
+                >
+                    Cancelar
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

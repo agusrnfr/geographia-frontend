@@ -1,0 +1,63 @@
+.button-accesible {
+    position: relative;
+    background-color: #fff;
+    border-radius: 50%;
+    padding: 14px 14px 10px 14px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    color: var(--color-button);
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s, color 0.3s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.button-accesible:hover {
+    background-color: #f0f0f0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    color: var(--color-button-hover);
+}
+
+.button-accesible:focus-visible {
+    outline: 3px solid var(--color-primario);
+    outline-offset: 2px;
+}
+
+.button-accesible span.material-symbols-outlined {
+    font-size: 36px;
+}
+
+.button-label {
+    position: absolute;
+    top: 50%;
+    right: 75px;
+    transform: translateY(-50%);
+    background-color: #ffffff;
+    border: 1px solid #d8d8d8;
+    color: var(--color-subtitulos);
+    padding: 6px 12px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 1em;
+    font-weight: 500;
+    border-radius: 6px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
+    margin-left: 8px;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.button-accesible:hover .button-label {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+@media (max-width: 900px) {
+    .button-label {
+        display: none;
+    }
+}

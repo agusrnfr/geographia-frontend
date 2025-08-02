@@ -1,0 +1,28 @@
+<div class="backdrop" (click)="cancel()" (keydown.escape)="cancel()">
+    <div
+        cdkTrapFocus
+        [@fadeInOut]
+        class="modal"
+        (click)="$event.stopPropagation()"
+        role="dialog"
+        aria-labelledby="modal-title"
+        aria-describedby="modal-description"
+    >
+        <div class="title">
+            <span class="material-symbols-outlined delete"> delete </span>
+            <h1 tabindex="0" id="modal-title" #firstFocusElement>
+                ELIMINAR LOCACIÓN
+            </h1>
+        </div>
+        <p class="subtitle" tabindex="0" id="modal-description">
+            ¿Esta seguro que desea eliminar esta locación? Esta acción no se
+            puede deshacer.
+        </p>
+        <div class="buttons">
+            <button class="button cancel" (click)="deleteLocation()">
+                ELIMINAR
+            </button>
+            <button class="button" (click)="cancel()">CANCELAR</button>
+        </div>
+    </div>
+</div>

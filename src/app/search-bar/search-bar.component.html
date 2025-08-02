@@ -1,0 +1,42 @@
+<div class="search-bar-wrapper" (focusin)="onWrapperFocus()" (focusout)="onWrapperBlur()">
+    <div class="search-bar-container">
+        <span class="material-symbols-outlined search" aria-hidden="true">search</span>
+        <input type="text" placeholder="Búsqueda..." [(ngModel)]="searchTerm" (input)="onInputChange()"
+            aria-label="Barra de búsqueda de lugares y publicaciones" tabindex="0" />
+    </div>
+
+    <div class="recents-dropdown" *ngIf="showDropdown" [@fadeInOut] role="listbox"
+        aria-label="Resultados o búsquedas recientes" tabindex="0">
+        <ng-container *ngIf="searchTerm.trim() === ''">
+            <h1 *ngIf="recentSearches.length > 0">RECIENTES</h1>
+            <p *ngIf="recentSearches.length === 0">
+                No hay locaciones recientes guardadas.
+            </p>
+            <div class="recent-item" *ngFor="let recent of recentSearches" (click)="selectItem(recent)"
+                (keydown.enter)="selectItem(recent)" tabindex="0" role="option" [attr.aria-label]="
+                    'Ubicación reciente: ' + recent.name + ', ' + recent.address
+                ">
+                <img [src]="recent.images[0]" alt="Ícono de ubicación reciente" class="recent-icon" />
+                <p class="recent-title">{{ recent.name }}</p>
+                <p class="recent-location">{{ recent.address }}</p>
+            </div>
+        </ng-container>
+
+        <ng-container *ngIf="searchTerm.trim() !== ''">
+            <h1 *ngIf="searchResults.length">RESULTADOS</h1>
+            <p *ngIf="!searchResults.length" class="no-results">
+                No se encontraron resultados
+            </p>
+
+            <div class="recent-item" *ngFor="let result of searchResults" (click)="selectItem(result)"
+                (keydown.enter)="selectItem(result)" tabindex="0" role="option" [attr.aria-label]="
+                    'Resultado: ' + result.name + ', ' + result.address
+                ">
+                <img [src]="result.images[0] || this.apiUrl + '/uploads/404_error.png'" alt="Ícono de resultado"
+                    class="recent-icon" />
+                <p class="recent-title">{{ result.name }}</p>
+                <p class="recent-location">{{ result.address }}</p>
+            </div>
+        </ng-container>
+    </div>
+</div>

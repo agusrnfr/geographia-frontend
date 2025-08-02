@@ -1,0 +1,144 @@
+<div class="profile-container">
+    <button
+        class="icon"
+        (click)="toggleMenu()"
+        aria-haspopup="true"
+        [attr.aria-expanded]="visibleMenu"
+        [attr.aria-label]="
+            'Abrir menú de perfil de usuario ' +
+            this.user?.first_name +
+            ' ' +
+            this.user?.last_name
+        "
+        tabindex="0"
+    >
+        <img
+            [src]="this.user?.profile_image_url"
+            [alt]="
+                'Icono de usuario de ' +
+                this.user?.first_name +
+                ' ' +
+                this.user?.last_name
+            "
+            class="icon"
+        />
+    </button>
+
+    <div class="profile-label" aria-hidden="true">Perfil de usuario</div>
+
+    <div
+        class="profile-menu"
+        *ngIf="visibleMenu"
+        [@fadeInOut]
+        aria-label="Menú de perfil de usuario"
+        tabindex="0"
+    >
+        <div class="profile-header">
+            <img
+                [src]="this.user?.profile_image_url"
+                [alt]="
+                    'Avatar de usuario de ' +
+                    this.user?.first_name +
+                    ' ' +
+                    this.user?.last_name
+                "
+                class="profile-avatar"
+                tabindex="0"
+            />
+            <div class="user-info">
+                <div class="user-name" tabindex="0">
+                    {{
+                        this.user
+                            ? this.user.first_name.toUpperCase() +
+                              " " +
+                              this.user.last_name.toUpperCase()
+                            : ""
+                    }}
+                </div>
+                <div class="user-email">
+                    <a tabindex="0" [href]="'mailto:' + this.user?.email">{{
+                        this.user?.email
+                    }}</a>
+                </div>
+            </div>
+        </div>
+        <ul
+            class="profile-options"
+            tabindex="0"
+            role="menu"
+            aria-label="Opciones del menú de perfil"
+        >
+            <li
+                tabindex="0"
+                role="menuitem"
+                (click)="editProfile()"
+                (keydown.enter)="editProfile()"
+                aria-label="Editar perfil de usuario"
+            >
+                <div class="icon-container">
+                    <span class="material-symbols-outlined" aria-hidden="true">
+                        edit
+                    </span>
+                </div>
+                <p>Editar información</p>
+            </li>
+            <li
+                tabindex="0"
+                role="menuitem"
+                (click)="changePassword()"
+                (keydown.enter)="changePassword()"
+                aria-label="Cambiar contraseña de usuario"
+            >
+                <div class="icon-container">
+                    <span class="material-symbols-outlined" aria-hidden="true">
+                        lock
+                    </span>
+                </div>
+                <p>Cambiar contraseña</p>
+            </li>
+            <li
+                tabindex="0"
+                role="menuitem"
+                (click)="privacity()"
+                (keydown.enter)="privacity()"
+                aria-label="Configuración de privacidad de usuario"
+            >
+                <div class="icon-container">
+                    <span class="material-symbols-outlined" aria-hidden="true">
+                        security
+                    </span>
+                </div>
+                <p>Privacidad</p>
+            </li>
+            <li
+                tabindex="0"
+                role="menuitem"
+                (click)="closeSesion()"
+                (keydown.enter)="closeSesion()"
+                aria-label="Cerrar sesión de usuario"
+            >
+                <div class="icon-container">
+                    <span class="material-symbols-outlined" aria-hidden="true">
+                        logout
+                    </span>
+                </div>
+                <p>Cerrar sesión</p>
+            </li>
+            <li
+                tabindex="0"
+                role="menuitem"
+                (click)="deleteProfile()"
+                (keydown.enter)="deleteProfile()"
+                aria-label="Eliminar perfil de usuario"
+            >
+                <span
+                    class="material-symbols-outlined delete"
+                    aria-hidden="true"
+                >
+                    delete
+                </span>
+                <p>Eliminar perfil</p>
+            </li>
+        </ul>
+    </div>
+</div>

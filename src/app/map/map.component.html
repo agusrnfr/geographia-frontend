@@ -1,0 +1,36 @@
+<div #firstFocusElement tabindex="0">
+    <app-map-types-list></app-map-types-list>
+</div>
+<app-search-bar></app-search-bar>
+<app-profile-icon *ngIf="isLoggedIn"></app-profile-icon>
+<app-login-button *ngIf="!isLoggedIn"></app-login-button>
+<app-button-list-locations></app-button-list-locations>
+<app-button-add-location></app-button-add-location>
+<router-outlet name="popup"></router-outlet>
+<router-outlet name="modal"></router-outlet>
+<mgl-map *ngIf="isBrowser" [style]="mapStyle" [zoom]="[4]" [center]="[-64.0, -34.0]" (mapClick)="onMapClick($event)"
+    [maxBounds]="argentinaBounds" [logoPosition]="'bottom-right'" [lang]="'es'" [tabindex]="-1">
+    <mgl-geojson-source id="mask" [data]="maskGeoJSON"> </mgl-geojson-source>
+
+    <mgl-layer id="mask-layer" type="fill" source="mask" [paint]="{
+            'fill-color': '#999999',
+            'fill-opacity': 0.5
+        }"></mgl-layer>
+
+    <mgl-control mglAttribution />
+    <mgl-control mglFullscreen />
+    <mgl-control mglGeolocate />
+    <mgl-control mglNavigation />
+
+    <mgl-popup *ngFor="let loc of filteredLocations" [lngLat]="[loc.longitude, loc.latitude]" [closeOnClick]="false">
+        <div class="popup-bubble popup-location" (click)="goToLocation(loc.id)">
+            <img [src]="loc.images[0] || this.apiUrl + '/uploads/404_error.png'" alt="Locación" class="popup-image" />
+        </div>
+    </mgl-popup>
+
+    <mgl-popup *ngIf="popup" [lngLat]="popup.coordinates" [closeOnClick]="false" (close)="popup = null">
+        <div class="popup-bubble" (click)="addLocation()">
+            <span class="material-symbols-outlined plus-icon"> close </span>
+        </div>
+    </mgl-popup>
+</mgl-map>

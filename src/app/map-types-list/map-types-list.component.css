@@ -1,0 +1,113 @@
+.manage_search {
+    font-size: 36px;
+    padding: 12px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    color: var(--color-button);
+    border: 1px solid #d8d8d8;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.manage_search:focus-visible {
+    outline: 3px solid var(--color-primario);
+    outline-offset: 2px;
+}
+
+.manage_search:hover {
+    background-color: #f0f0f0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    color: var(--color-button-hover);
+}
+
+.map-types-list {
+    transform-origin: top left;
+}
+
+.map-types-menu:focus-visible {
+    outline: 3px solid var(--color-primario);
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+.map-types {
+    font-family: "Montserrat", sans-serif;
+    font-weight: bold;
+    padding: 12px 32px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    color: var(--color-texto);
+    border: 1px solid #d8d8d8;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin-top: 15px;
+    font-size: 1.25em;
+    transition: all 0.3s ease;
+}
+
+.map-types:focus-visible {
+    outline: 3px solid var(--color-primario);
+    outline-offset: 2px;
+}
+
+.map-types.active {
+    background-color: var(--color-button);
+    color: white;
+    border: 1px solid var(--color-button);
+}
+
+.map-types:hover {
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.35);
+    cursor: pointer;
+}
+
+.map-filter-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.map-filter-label {
+    position: absolute;
+    left: 110%;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #ffffff;
+    border: 1px solid #d8d8d8;
+    color: var(--color-subtitulos);
+    padding: 6px 12px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 1em;
+    font-weight: 500;
+    border-radius: 6px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
+    margin-left: 8px;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.map-filter-wrapper:hover .map-filter-label,
+.map-filter-label.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+@media (max-width: 900px) {
+    .map-types {
+        padding: 8px 16px;
+        font-size: 1em;
+    }
+
+    .manage_search {
+        font-size: 28px;
+        padding: 8px;
+    }
+
+    .map-filter-label {
+        display: none;
+    }
+}

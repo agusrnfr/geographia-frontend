@@ -1,0 +1,51 @@
+<div class="backdrop" (click)="cancel()" (keydown.escape)="cancel()">
+    <div
+        cdkTrapFocus
+        [@fadeInOut]
+        class="modal"
+        (click)="$event.stopPropagation()"
+        role="dialog"
+        aria-labelledby="modal-title"
+        aria-describedby="modal-description"
+        #PATCH
+    >
+        <div class="title">
+            <span class="material-symbols-outlined star-title">
+                family_star
+            </span>
+            <h1 #firstFocusElement tabindex="0">CALIFICAR LOCACIÓN</h1>
+        </div>
+        <div class="stars" (mouseleave)="clearHover()">
+            <ng-container *ngFor="let star of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]">
+                <span
+                    class="material-symbols-outlined star"
+                    [class.filled]="isFilled(star)"
+                    (mouseenter)="setRating(star)"
+                    (keydown.enter)="confirmRating()"
+                    (focus)="setRating(star)"
+                    (click)="clickedRating(star)"
+                    tabindex="0"
+                    [attr.aria-label]="
+                        'Al presionar enter se establecerá la calificación en ' +
+                        star +
+                        ' estrellas'
+                    "
+                    role="button"
+                >
+                    star
+                </span>
+            </ng-container>
+        </div>
+
+        <div class="buttons">
+            <button
+                class="button"
+                [disabled]="selectedRating === 0"
+                (click)="confirmRating()"
+            >
+                {{ this.update ? "Actualizar" : "Calificar" }}
+            </button>
+            <button class="button cancel" (click)="cancel()">Cancelar</button>
+        </div>
+    </div>
+</div>

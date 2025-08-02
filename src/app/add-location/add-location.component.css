@@ -1,0 +1,99 @@
+:host {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100dvh;
+    width: 100dvw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+}
+
+.tags-container {
+    display: flex;
+    flex-wrap: wrap;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    gap: 4px;
+    cursor: text;
+    color: var(--color-texto);
+    padding: 4.5px 4px;
+    border: none;
+    border-bottom: 1px solid #ccc;
+}
+
+.tag.placeholder {
+    color: #545454;
+    font-style: italic;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    background-color: transparent;
+    border: 1px dashed #ccc;
+}
+
+.tag {
+    background-color: #e0e0e0;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 4px 8px;
+    font-size: 0.85em;
+    display: flex;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    align-items: center;
+}
+
+.remove {
+    margin-left: 4px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.error {
+    margin-top: 8px;
+    margin-bottom: 0;
+}
+
+.address-suggestions {
+    list-style: none;
+    padding: 0;
+    margin: 4px 0 0 0;
+    border: 1px solid #ccc;
+    overflow-y: auto;
+    background: #fff;
+    z-index: 1000;
+    position: absolute;
+    width: 100%;
+    top: 76px;
+    left: 0;
+}
+
+.address-suggestions li {
+    padding: 8px;
+    cursor: pointer;
+    font-family: "Montserrat", sans-serif;
+    transition: background-color 0.2s ease;
+}
+
+.address-suggestions li:hover {
+    background-color: #f0f0f0;
+}
+
+.clear-button {
+    position: absolute;
+    right: 6px;
+    top: 41px;
+    background: transparent;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #888;
+    background-color: white;
+    padding: 0 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 25%;
+}
+.clear-button:hover {
+    color: #333;
+}

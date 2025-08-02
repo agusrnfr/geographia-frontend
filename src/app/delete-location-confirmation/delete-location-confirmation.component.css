@@ -1,0 +1,67 @@
+:host {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100dvh;
+    width: 100dvw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+}
+
+.modal {
+    min-width: 340px;
+    max-width: 400px;
+}
+
+.title {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.title h1 {
+    margin: 0;
+}
+
+.delete {
+    font-size: 2em;
+    color: var(--color-button-cancel);
+}
+
+.button {
+    font-size: 1.4em;
+    font-weight: 700;
+}
+
+@media (max-width: 900px) {
+    .modal {
+        width: 70%;
+        max-width: 100%;
+        min-width: unset;
+        padding: 1.5rem 1rem;
+    }
+
+    .title h1 {
+        font-size: 0.6em;
+    }
+
+    .delete {
+        font-size: 0.7em;
+    }
+
+    .subtitle {
+        font-size: 0.95em;
+    }
+
+    .buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .button {
+        width: 100%;
+        font-size: 1.1em;
+    }
+}

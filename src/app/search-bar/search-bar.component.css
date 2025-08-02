@@ -1,0 +1,156 @@
+.search-bar-wrapper {
+    width: 35vw;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.search-bar-container {
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    border-radius: 8px;
+    width: 100%;
+    background-color: #ffffff;
+    border: 1px solid #d8d8d8;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+}
+
+.search-bar-container input {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+    font-size: 1.15rem;
+    width: 100%;
+    border: none;
+    outline: none;
+}
+
+.search-bar-container input:focus-visible {
+    outline: 3px solid var(--color-primario);
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+.search {
+    color: var(--color-texto);
+    margin-right: 8px;
+    font-size: 28px;
+}
+
+.recents-dropdown {
+    background-color: #ffffff;
+    border: 1px solid #d8d8d8;
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 8px;
+    z-index: 10;
+    padding: 20px;
+    max-height: 300px;
+    overflow-y: auto;
+    font-weight: 200;
+}
+
+.recents-dropdown:focus-visible {
+    outline: 3px solid var(--color-primario);
+    outline-offset: 2px;
+}
+
+.recents-dropdown h1 {
+    font-size: 1.2rem;
+    color: var(--color-texto);
+    margin-bottom: 5px;
+    font-family: "Montserrat", sans-serif;
+}
+
+.recents-dropdown ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.recent-item {
+    padding: 8px 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    font-family: "Montserrat", sans-serif;
+    font-size: 1rem;
+    outline: none;
+}
+
+.recent-item:hover {
+    background-color: #f0f0f0;
+    border-radius: 4px;
+}
+
+.recent-item:focus-visible {
+    outline: 3px solid var(--color-primario);
+    outline-offset: 2px;
+}
+
+.recent-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.recent-title {
+    font-weight: 600;
+    color: var(--color-texto);
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.recent-location {
+    font-style: italic;
+    color: var(--color-texto);
+    font-weight: 400;
+}
+
+@media (max-width: 900px) {
+    .search-bar-wrapper {
+        width: 50vw;
+        min-width: 240px;
+    }
+
+    .search-bar-container {
+        padding: 6px 10px;
+        border-radius: 6px;
+    }
+
+    .search-bar-container input {
+        font-size: 0.95rem;
+    }
+
+    .search {
+        font-size: 20px;
+        margin-right: 6px;
+    }
+
+    .recents-dropdown {
+        font-size: 0.9rem;
+        padding: 8px;
+        border-radius: 0 0 6px 6px;
+    }
+
+    .recent-item {
+        padding: 6px 2px;
+        font-size: 0.9rem;
+    }
+
+    .recent-icon {
+        width: 34px;
+        height: 34px;
+    }
+
+    .recent-title {
+        margin-left: 8px;
+        margin-right: 6px;
+        font-size: 0.9rem;
+    }
+
+    .recent-location {
+        font-size: 0.85rem;
+    }
+}

@@ -1,0 +1,123 @@
+<div class="backdrop" (click)="cancelEdit()" (keydown.escape)="cancelEdit()">
+    <div cdkTrapFocus [@fadeInOut] class="modal" (click)="$event.stopPropagation()" role="dialog" aria-modal="true"
+        aria-labelledby="modal-title">
+        <h1 #firstFocusElement id="modal-title" tabindex="0" style="margin-bottom: 2px">
+            EDITAR PERFIL
+        </h1>
+        <p class="required-fields" tabindex="0">
+            Los campos marcados con <span class="required">*</span> son
+            obligatorios.
+        </p>
+
+        <form [formGroup]="editProfileForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <div class="form-row">
+                    <label for="first_name">NOMBRE*</label>
+                    <input id="first_name" type="text" formControlName="first_name" placeholder="Nombre" />
+                    <div *ngIf="
+                            editProfileForm.get('first_name')?.touched &&
+                            editProfileForm.get('first_name')?.invalid
+                        " class="error" role="alert" tabindex="0">
+                        <div *ngIf="editProfileForm.get('first_name')?.errors?.['required']">
+                            Este campo es obligatorio.
+                        </div>
+                        <div *ngIf="editProfileForm.get('first_name')?.errors?.['minlength']">
+                            Debe tener al menos 2 caracteres.
+                        </div>
+                        <div *ngIf="editProfileForm.get('first_name')?.errors?.['pattern']">
+                            Solo se permiten letras y espacios.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <label for="last_name">APELLIDO*</label>
+                    <input id="last_name" type="text" formControlName="last_name" placeholder="Apellido" />
+                    <div *ngIf="
+                            editProfileForm.get('last_name')?.touched &&
+                            editProfileForm.get('last_name')?.invalid
+                        " class="error" role="alert" tabindex="0">
+                        <div *ngIf="editProfileForm.get('last_name')?.errors?.['required']">
+                            Este campo es obligatorio.
+                        </div>
+                        <div *ngIf="editProfileForm.get('last_name')?.errors?.['minlength']">
+                            Debe tener al menos 2 caracteres.
+                        </div>
+                        <div *ngIf="editProfileForm.get('last_name')?.errors?.['pattern']">
+                            Solo se permiten letras y espacios.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="form-row">
+                    <label for="email">CORREO ELECTRÓNICO*</label>
+                    <input id="email" type="email" formControlName="email" placeholder="correo@ejemplo.com" />
+                    <div *ngIf="
+                            editProfileForm.get('email')?.touched &&
+                            editProfileForm.get('email')?.invalid
+                        " class="error" role="alert" tabindex="0">
+                        <div *ngIf="editProfileForm.get('email')?.errors?.['required']">
+                            Este campo es obligatorio.
+                        </div>
+                        <div *ngIf="editProfileForm.get('email')?.errors?.['email']">
+                            Debe ser un correo electrónico válido.
+                        </div>
+                        <div *ngIf="editProfileForm.get('email')?.errors?.['maxLength']">
+                            El correo electrónico no puede exceder los 50
+                            caracteres.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <label for="birth_date">FECHA DE NACIMIENTO*</label>
+                    <input id="birth_date" type="date" formControlName="birth_date" />
+                    <div *ngIf="
+                            editProfileForm.get('birth_date')?.touched &&
+                            editProfileForm.get('birth_date')?.invalid
+                        " class="error" role="alert" tabindex="0">
+                        <div *ngIf="editProfileForm.get('birth_date')?.errors?.['required']">
+                            Este campo es obligatorio.
+                        </div>
+                        <div *ngIf="editProfileForm.get('birth_date')?.errors?.['minAge']">
+                            Debes tener al menos 13 años para registrarte.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <label aria-hidden="true" tabindex="-1" for="profile_image">FOTO DE PERFIL</label>
+
+                <label for="profile_image" class="upload-label">
+                    <span class="material-symbols-outlined upload-button" tabindex="0" role="button"
+                        aria-label="Subir imagen de perfil" (keydown)="handleKeyPress($event)">add_a_photo</span>
+                    Subir imagen
+                </label>
+
+                <input #fileInput id="profile_image" type="file" accept="image/*" (change)="onFileChange($event)"
+                    hidden />
+
+                <div class="image-preview">
+                    <img tabindex="0" *ngIf="selectedImagePreview" [src]="selectedImagePreview"
+                        [alt]="'Vista previa de la imagen seleccionada'" />
+                </div>
+
+                <div *ngIf="imageError" class="error image-error" role="alert" tabindex="0">
+                    {{ imageError }}
+                </div>
+            </div>
+
+            <div class="buttons">
+                <button type="submit" class="button" [disabled]="editProfileForm.invalid">
+                    Guardar cambios
+                </button>
+                <button type="button" class="button cancel" (click)="cancelEdit()">
+                    Cancelar
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
