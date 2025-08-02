@@ -15,7 +15,7 @@ const baseEnv = {
 const prodEnv = {
     ...baseEnv,
     production: true,
-    apiUrl: "https://geographia-api-production.up.railway.app/",
+    apiUrl: "https://geographia-api-production.up.railway.app/api",
 };
 
 function writeEnvFile(filePath, envObject) {
