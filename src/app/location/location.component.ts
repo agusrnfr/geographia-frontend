@@ -407,6 +407,22 @@ export class LocationComponent implements OnInit {
     }
 
     rateLocation() {
+        if (!this.userLoggedIn) {
+            Swal.fire({
+                icon: 'info',
+                title: 'Inicio de sesión requerido',
+                text: 'Para realizar esta acción, por favor, inicie sesión.',
+                timerProgressBar: true,
+                showCloseButton: true,
+                showConfirmButton: false,
+                customClass: {
+                    popup: 'montserrat-swal',
+                    closeButton: 'montserrat-close',
+                },
+            });
+            return;
+        }
+
         this.router.navigate(
             [
                 '/map',
