@@ -13,6 +13,14 @@
                 "build": {
                     "builder": "@angular-devkit/build-angular:application",
                     "options": {
+                        "allowedCommonJsDependencies": [
+                            "mapbox-gl",
+                            "@turf/jsts",
+                            "skmeans",
+                            "concaveman",
+                            "fast-deep-equal",
+                            "earcut"
+                        ],
                         "outputPath": "dist/frontend",
                         "index": "src/index.html",
                         "browser": "src/main.ts",
