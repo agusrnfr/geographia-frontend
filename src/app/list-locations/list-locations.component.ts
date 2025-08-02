@@ -62,7 +62,12 @@ export class ListLocationsComponent implements OnInit, OnDestroy {
 
         this.locationService.getAllLocations().subscribe({
             next: (response) => {
-                this.locations = response;
+                this.locations = response.map((location: Location) => ({
+                    ...location,
+                    images: !environment.production
+                        ? location.images.map((image) => this.apiUrl + image)
+                        : location.images,
+                }));
                 this.typeSub = this.typeService
                     .getCurrentType()
                     .subscribe((type) => {

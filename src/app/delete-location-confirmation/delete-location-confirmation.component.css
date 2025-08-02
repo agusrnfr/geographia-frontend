@@ -11,8 +11,7 @@
 }
 
 .modal {
-    min-width: 340px;
-    max-width: 400px;
+    max-width: 420px;
 }
 
 .title {
@@ -23,6 +22,7 @@
 
 .title h1 {
     margin: 0;
+    font-size: 1.3em;
 }
 
 .delete {
@@ -31,37 +31,26 @@
 }
 
 .button {
-    font-size: 1.4em;
+    font-size: 1em;
     font-weight: 700;
 }
 
-@media (max-width: 900px) {
-    .modal {
-        width: 70%;
-        max-width: 100%;
-        min-width: unset;
-        padding: 1.5rem 1rem;
-    }
-
+@media (min-width: 768px) {
     .title h1 {
-        font-size: 0.6em;
+        font-size: 1.5em;
     }
 
     .delete {
-        font-size: 0.7em;
-    }
-
-    .subtitle {
-        font-size: 0.95em;
-    }
-
-    .buttons {
-        flex-direction: column;
-        gap: 10px;
+        font-size: 2.5em;
     }
 
     .button {
-        width: 100%;
-        font-size: 1.1em;
+        font-size: 1.4em;
     }
+}
+
+@media (min-width: 1024px) {
+}
+
+@media (min-width: 1440px) {
 }

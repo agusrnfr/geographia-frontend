@@ -35,7 +35,7 @@ li {
 h1 {
     font-family: "Montserrat", sans-serif;
     font-weight: 700;
-    font-size: 2em;
+    font-size: 1.5em;
     color: var(--color-texto);
     margin: 0;
     padding: 0;
@@ -45,7 +45,7 @@ h1 {
 p {
     font-family: "Montserrat", sans-serif;
     font-weight: 400;
-    font-size: 1em;
+    font-size: 0.85em;
     color: var(--color-texto);
     margin: 0;
     padding: 0;
@@ -55,18 +55,19 @@ p {
     position: absolute;
     top: 0;
     left: 0;
-    height: 100%;
+    height: fit-content;
     width: 100%;
     background-color: rgba(0, 0, 0, 0.4);
     display: flex;
     align-items: center;
     justify-content: center;
+    min-height: 100%;
 }
 
 .subtitle {
     font-family: "Montserrat", sans-serif;
     font-weight: 500;
-    font-size: 1.2em;
+    font-size: 1em;
     color: var(--color-subtitulos);
     margin-top: 8px;
     margin-bottom: 16px;
@@ -95,22 +96,22 @@ p {
 }
 
 .error {
-    font-size: 0.85em;
+    font-size: 0.75em;
     color: var(--color-error-text);
     background-color: var(--color-error-background);
     padding: 0.5em;
     border-radius: 4px;
     font-family: "Montserrat", sans-serif;
-    margin-bottom: 16px;
+    margin-bottom: 8px;
 }
 
 .modal {
     background: white;
     border-radius: 12px;
+    max-width: 75vw;
     padding: 2rem;
+    margin: 2rem 1rem;
     z-index: 2001;
-    min-width: 600px;
-    position: relative;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
@@ -121,7 +122,7 @@ p {
 label {
     font-family: "Montserrat", sans-serif;
     font-weight: 600;
-    font-size: 1.5em;
+    font-size: 1.15em;
     color: var(--color-texto);
     margin-bottom: 8px;
 }
@@ -129,7 +130,7 @@ label {
 input {
     font-family: "Montserrat", sans-serif;
     font-weight: 400;
-    font-size: 1em;
+    font-size: 0.85em;
     color: var(--color-texto);
     padding: 8px 4px;
     border: none;
@@ -141,9 +142,6 @@ input {
 }
 
 .form-group {
-    display: flex;
-    justify-content: space-between;
-    gap: 16px;
     width: 100%;
 }
 
@@ -176,7 +174,7 @@ input {
     align-items: center;
     font-family: "Montserrat", sans-serif;
     font-weight: 500;
-    font-size: 1.15em;
+    font-size: 1em;
 }
 
 .upload-button {
@@ -224,7 +222,7 @@ textarea {
 select {
     font-family: "Montserrat", sans-serif;
     font-weight: 500;
-    font-size: 1em;
+    font-size: 0.85em;
     color: var(--color-texto);
     padding: 8px 4px;
     border-radius: 4px;
@@ -251,78 +249,6 @@ select {
     border: 0 !important;
 }
 
-/* Responsive */
-
-@media (max-width: 900px) {
-    .register-container {
-        flex-direction: column;
-        height: auto;
-    }
-
-    .register-form-section {
-        padding: 2rem 1rem 3rem 1rem !important;
-        max-width: 100%;
-    }
-
-    .form-content {
-        padding: 2rem 1rem 0 1rem !important;
-        max-width: 100%;
-    }
-
-    .title {
-        font-size: 3em !important;
-    }
-
-    .tab-switch {
-        font-size: 1.2em !important;
-        margin-bottom: 2rem !important;
-    }
-
-    .register-image-section {
-        height: 200px;
-        flex: none;
-    }
-
-    .register-image-section img {
-        height: 100%;
-        width: 100%;
-        object-fit: cover;
-    }
-
-    form {
-        padding: 0 1rem;
-    }
-
-    .email-wrapper,
-    .password-wrapper {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .email-wrapper > span,
-    .password-wrapper > span {
-        border-bottom: none;
-        padding: 0 0 4px 0;
-    }
-
-    input {
-        width: 100% !important;
-        font-size: 1.1em !important;
-    }
-
-    .toggle-password {
-        position: static;
-        margin-top: 4px;
-    }
-
-    .button.register-button,
-    .gsi-material-button {
-        max-width: 100% !important;
-    }
-}
-
-/* Button Styles */
-
 .button {
     background-color: var(--color-button);
     color: white;
@@ -332,7 +258,7 @@ select {
     cursor: pointer;
     font-family: "Montserrat", sans-serif;
     font-weight: 500;
-    font-size: 1em;
+    font-size: 0.85em;
     transition: background-color 0.3s ease;
 }
 
@@ -408,12 +334,49 @@ html {
     font-family: "Montserrat", sans-serif;
 }
 
-@media (max-width: 900px) {
-    html {
-        font-size: 14px;
+.swal2-container {
+    z-index: 20000 !important;
+}
+
+@media (min-width: 768px) {
+    .form-group {
+        display: flex;
+        flex-direction: row;
+        gap: 16px;
+    }
+
+    h1 {
+        font-size: 2em;
+    }
+
+    label {
+        font-size: 1.2em;
+    }
+
+    select {
+        font-size: 1em;
+    }
+
+    input {
+        font-size: 1em;
+    }
+
+    .button {
+        font-size: 1em;
+    }
+
+    .subtitle {
+        font-size: 1.2em;
+    }
+
+    .error {
+        font-size: 0.85em;
+        margin-bottom: 16px;
     }
 }
 
-.swal2-container {
-    z-index: 20000 !important;
+@media (min-width: 1024px) {
+}
+
+@media (min-width: 1440px) {
 }

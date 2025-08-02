@@ -14,11 +14,16 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 4px;
+}
+
+h1 {
+    margin-bottom: 0;
 }
 
 .type {
     font-family: "Montserrat", sans-serif;
-    font-size: 1.5rem;
+    font-size: 1.15rem;
     margin-left: 1rem;
     font-weight: 500;
 }
@@ -80,11 +85,41 @@
 }
 
 .page-info {
-    font-size: 1.15rem;
+    font-size: 0.85rem;
     font-family: "Montserrat", sans-serif;
     font-weight: bold;
 }
 
 .buttons {
     text-align: right;
+}
+
+.modal {
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+}
+
+.pagination {
+    margin-top: auto;
+}
+
+@media (min-width: 768px) {
+    .page-info {
+        font-size: 1.2rem;
+    }
+
+    .modal {
+        min-width: 400px;
+    }
+
+    .type {
+        font-size: 1.35rem;
+    }
+}
+
+@media (min-width: 1024px) {
+}
+
+@media (min-width: 1440px) {
 }

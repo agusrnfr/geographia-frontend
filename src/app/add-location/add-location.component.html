@@ -1,7 +1,22 @@
-<div class="backdrop" (click)="closeAddLocation()" (keydown.escape)="closeAddLocation()">
-    <div cdkTrapFocus [@fadeInOut] class="modal" (click)="$event.stopPropagation()" role="dialog"
-        aria-labelledby="modal-title">
-        <h1 style="margin-bottom: 2px" tabindex="0" id="modal-title" #firstFocusElement>
+<div
+    class="backdrop"
+    (click)="closeAddLocation()"
+    (keydown.escape)="closeAddLocation()"
+>
+    <div
+        cdkTrapFocus
+        [@fadeInOut]
+        class="modal"
+        (click)="$event.stopPropagation()"
+        role="dialog"
+        aria-labelledby="modal-title"
+    >
+        <h1
+            style="margin-bottom: 2px"
+            tabindex="0"
+            id="modal-title"
+            #firstFocusElement
+        >
             AGREGAR LOCACIÓN
         </h1>
         <p class="required-fields">
@@ -12,12 +27,25 @@
             <div class="form-group">
                 <div class="form-row">
                     <label for="name">NOMBRE*</label>
-                    <input placeholder="Nombre de la locación" #name id="name" type="text" formControlName="name" />
-                    <div *ngIf="
+                    <input
+                        placeholder="Nombre de la locación"
+                        #name
+                        id="name"
+                        type="text"
+                        formControlName="name"
+                    />
+                    <div
+                        *ngIf="
                             addLocationForm.get('name')?.touched &&
                             addLocationForm.get('name')?.invalid
-                        " class="error" role="alert" tabindex="0">
-                        <div *ngIf="addLocationForm.get('name')?.errors?.['required']">
+                        "
+                        class="error"
+                        role="alert"
+                        tabindex="0"
+                    >
+                        <div
+                            *ngIf="addLocationForm.get('name')?.errors?.['required']"
+                        >
                             Este campo es obligatorio.
                         </div>
                     </div>
@@ -26,38 +54,67 @@
                 <div class="form-row" style="position: relative">
                     <label for="address">DIRECCIÓN*</label>
 
-                    <input id="address" type="text" formControlName="address" (input)="onAddressInput()"
-                        (blur)="onAddressBlur()" (focus)="onAddressFocus()" autocomplete="off"
-                        [readOnly]="isAddressSelected" [class]="
+                    <input
+                        id="address"
+                        type="text"
+                        formControlName="address"
+                        (input)="onAddressInput()"
+                        (blur)="onAddressBlur()"
+                        (focus)="onAddressFocus()"
+                        autocomplete="off"
+                        [readOnly]="isAddressSelected"
+                        [class]="
                             isAccesibility && !isAddressSelected
                                 ? ''
                                 : 'readonly-input'
-                        " />
+                        "
+                    />
 
-                    <button *ngIf="isAddressSelected" type="button" class="clear-button"
-                        (click)="clearSelectedAddress()" aria-label="Limpiar dirección">
+                    <button
+                        *ngIf="isAddressSelected"
+                        type="button"
+                        class="clear-button"
+                        (click)="clearSelectedAddress()"
+                        aria-label="Limpiar dirección"
+                    >
                         &times;
                     </button>
 
-                    <ul *ngIf="
+                    <ul
+                        *ngIf="
                             isAccesibility &&
                             showSuggestions &&
                             addressSuggestions.length
-                        " class="address-suggestions">
-                        <li *ngFor="let suggestion of addressSuggestions" (mousedown)="selectSuggestion(suggestion)"
-                            (keydown.enter)="selectSuggestion(suggestion)" tabindex="0">
+                        "
+                        class="address-suggestions"
+                    >
+                        <li
+                            *ngFor="let suggestion of addressSuggestions"
+                            (mousedown)="selectSuggestion(suggestion)"
+                            (keydown.enter)="selectSuggestion(suggestion)"
+                            tabindex="0"
+                        >
                             {{ suggestion.properties.full_address }}
                         </li>
                     </ul>
 
-                    <div *ngIf="
+                    <div
+                        *ngIf="
                             addLocationForm.get('address')?.touched &&
                             addLocationForm.get('address')?.invalid
-                        " class="error" role="alert" tabindex="0">
-                        <div *ngIf="addLocationForm.get('address')?.errors?.['required']">
+                        "
+                        class="error"
+                        role="alert"
+                        tabindex="0"
+                    >
+                        <div
+                            *ngIf="addLocationForm.get('address')?.errors?.['required']"
+                        >
                             Este campo es obligatorio.
                         </div>
-                        <div *ngIf="addLocationForm.get('address')?.errors?.['invalidLocation']">
+                        <div
+                            *ngIf="addLocationForm.get('address')?.errors?.['invalidLocation']"
+                        >
                             Por favor seleccioná una dirección válida del
                             listado.
                         </div>
@@ -69,25 +126,51 @@
                 <label for="images">IMÁGENES*</label>
 
                 <label for="images" class="upload-label">
-                    <span class="material-symbols-outlined upload-button" tabindex="0" role="button"
-                        aria-label="Subir imagen de perfil" (keydown)="handleKeyPress($event)">
+                    <span
+                        class="material-symbols-outlined upload-button"
+                        tabindex="0"
+                        role="button"
+                        aria-label="Subir imagen de perfil"
+                        (keydown)="handleKeyPress($event)"
+                    >
                         add_photo_alternate
                     </span>
                     Agregar al menos una imagen desde el dispositivo
-                    <div *ngIf="addLocationForm.get('images')?.value.length > 20" class="error" role="alert"
-                        tabindex="0">
-                        <div *ngIf="addLocationForm.get('images')?.errors?.['required']">
+                    <div
+                        *ngIf="addLocationForm.get('images')?.value.length > 20"
+                        class="error"
+                        role="alert"
+                        tabindex="0"
+                    >
+                        <div
+                            *ngIf="addLocationForm.get('images')?.errors?.['required']"
+                        >
                             Máximo 20 imágenes permitidas.
                         </div>
                     </div>
                 </label>
 
-                <input #fileInput id="images" type="file" multiple (change)="onFileChange($event)" accept="image/*"
-                    hidden />
+                <input
+                    #fileInput
+                    id="images"
+                    type="file"
+                    multiple
+                    (change)="onFileChange($event)"
+                    accept="image/*"
+                    hidden
+                />
 
-                <div>
+                <div
+                    *ngIf="selectedImagePreviews.length > 0"
+                    class="image-preview-container"
+                >
                     <div class="image-preview">
-                        <img *ngFor="let image of selectedImagePreviews" [src]="image" alt="preview" tabindex="0" />
+                        <img
+                            *ngFor="let image of selectedImagePreviews"
+                            [src]="image"
+                            alt="preview"
+                            tabindex="0"
+                        />
                     </div>
                 </div>
             </div>
@@ -95,18 +178,36 @@
             <div class="form-row">
                 <label for="etiquetas">ETIQUETAS</label>
 
-                <input *ngIf="isEditingTags" id="etiquetas" type="text" [formControl]="tagInputControl"
-                    (blur)="onTagsBlur()" (focus)="onTagsFocus()" (keydown.enter)="onTagsBlur()" #tagInputElement />
-                <div *ngIf="!isEditingTags" class="tags-container" (click)="enableTagEdit()"
-                    (keydown.enter)="enableTagEdit()" tabindex="0" aria-label="Apretar Enter para editar etiquetas">
+                <input
+                    *ngIf="isEditingTags"
+                    id="etiquetas"
+                    type="text"
+                    [formControl]="tagInputControl"
+                    (blur)="onTagsBlur()"
+                    (focus)="onTagsFocus()"
+                    (keydown.enter)="onTagsBlur()"
+                    #tagInputElement
+                />
+                <div
+                    *ngIf="!isEditingTags"
+                    class="tags-container"
+                    (click)="enableTagEdit()"
+                    (keydown.enter)="enableTagEdit()"
+                    tabindex="0"
+                    aria-label="Apretar Enter para editar etiquetas"
+                >
                     <span class="tag placeholder" *ngIf="tags.length === 0">
                         Agrega etiquetas usando #
                     </span>
 
-                    <span class="tag" *ngFor="let tag of tags; let i = index"
+                    <span
+                        class="tag"
+                        *ngFor="let tag of tags; let i = index"
                         (click)="deleteTag(i); $event.stopPropagation()"
-                        (keydown.enter)="deleteTag(i); $event.stopPropagation()" tabindex="0"
-                        aria-label="Apretar Enter para eliminar etiqueta">
+                        (keydown.enter)="deleteTag(i); $event.stopPropagation()"
+                        tabindex="0"
+                        aria-label="Apretar Enter para eliminar etiqueta"
+                    >
                         {{ tag }} <span class="remove">&times;</span>
                     </span>
                 </div>
@@ -114,8 +215,12 @@
 
             <div class="form-row">
                 <label for="details">DETALLES</label>
-                <textarea id="details" formControlName="details" placeholder="Agregar detalles de la locación"
-                    rows="4"></textarea>
+                <textarea
+                    id="details"
+                    formControlName="details"
+                    placeholder="Agregar detalles de la locación"
+                    rows="4"
+                ></textarea>
             </div>
 
             <div class="form-row">
@@ -128,21 +233,36 @@
                     <option value="GEOGRÁFICA">Geográfica</option>
                     <option value="HISTÓRICA">Histórica</option>
                 </select>
-                <div *ngIf="
+                <div
+                    *ngIf="
                         addLocationForm.get('type')?.touched &&
                         addLocationForm.get('type')?.invalid
-                    " class="error" role="alert" tabindex="0">
-                    <div *ngIf="addLocationForm.get('type')?.errors?.['required']">
+                    "
+                    class="error"
+                    role="alert"
+                    tabindex="0"
+                >
+                    <div
+                        *ngIf="addLocationForm.get('type')?.errors?.['required']"
+                    >
                         Este campo es obligatorio.
                     </div>
                 </div>
             </div>
 
             <div class="buttons">
-                <button class="button" type="submit" [disabled]="addLocationForm.invalid">
+                <button
+                    class="button"
+                    type="submit"
+                    [disabled]="addLocationForm.invalid"
+                >
                     Enviar
                 </button>
-                <button class="button cancel" type="button" (click)="closeAddLocation()">
+                <button
+                    class="button cancel"
+                    type="button"
+                    (click)="closeAddLocation()"
+                >
                     Cancelar
                 </button>
             </div>

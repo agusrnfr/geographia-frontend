@@ -1,18 +1,43 @@
-<div class="verification-container" role="region" aria-labelledby="verification-title"
-    aria-describedby="verification-description">
-    <h2 id="verification-title" tabindex="0">Verificar código</h2>
-    <p id="verification-description" tabindex="0">Ingresá el código de 4 dígitos que recibiste por correo.</p>
+<div
+    class="verification-container"
+    role="region"
+    aria-labelledby="verification-title"
+    aria-describedby="verification-description"
+>
+    <h1 id="verification-title" tabindex="0">Verificar código</h1>
+    <p id="verification-description" tabindex="0">
+        Ingresá el código de 4 dígitos que recibiste por correo.
+    </p>
 
     <form [formGroup]="form" (ngSubmit)="submit()">
         <div class="code-inputs">
-            <input *ngFor="let ctrl of codeControls; let i = index" maxlength="1" type="text" inputmode="numeric"
-                pattern="[0-9]*" [formControl]="ctrl" (input)="onInput($event, i)" (keydown)="onKeyDown($event, i)"
-                (paste)="onPaste($event)" class="code-box" autocomplete="one-time-code" />
+            <input
+                *ngFor="let ctrl of codeControls; let i = index"
+                maxlength="1"
+                type="text"
+                inputmode="numeric"
+                pattern="[0-9]*"
+                [formControl]="ctrl"
+                (input)="onInput($event, i)"
+                (keydown)="onKeyDown($event, i)"
+                (paste)="onPaste($event)"
+                class="code-box"
+                autocomplete="one-time-code"
+            />
         </div>
-        <div *ngIf="form.get('code')?.value?.length === 4 && !isCodeValid()" class="error" role="alert" tabindex="0">
+        <div
+            *ngIf="form.get('code')?.value?.length === 4 && !isCodeValid()"
+            class="error"
+            role="alert"
+            tabindex="0"
+        >
             Solo se permiten números.
         </div>
-        <button type="submit" class="button" [disabled]="form.get('code')?.value?.length !== 4 || !isCodeValid()">
+        <button
+            type="submit"
+            class="button"
+            [disabled]="form.get('code')?.value?.length !== 4 || !isCodeValid()"
+        >
             Verificar
         </button>
     </form>

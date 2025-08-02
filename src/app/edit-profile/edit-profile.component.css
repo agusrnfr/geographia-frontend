@@ -8,16 +8,25 @@
     align-items: center;
     justify-content: center;
     z-index: 2000;
+    overflow: scroll;
 }
 
 input {
     margin-bottom: 8px;
 }
 
-.modal {
-    min-width: 650px;
-}
-
 .image-error {
     margin-top: 12px;
+}
+
+@media (min-width: 768px) {
+    .modal {
+        min-width: 650px;
+    }
+}
+
+@media (min-width: 1024px) {
+}
+
+@media (min-width: 1440px) {
 }

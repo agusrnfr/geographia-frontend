@@ -1,13 +1,9 @@
 :host {
     position: fixed;
-    top: 0;
-    left: 0;
     height: 100dvh;
     width: 100dvw;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     z-index: 2000;
+    overflow: scroll;
 }
 
 .tags-container {
@@ -96,4 +92,16 @@
 }
 .clear-button:hover {
     color: #333;
+}
+
+@media (min-width: 768px) {
+    .upload-label {
+        font-size: 1.15em;
+    }
+}
+
+@media (min-width: 1024px) {
+}
+
+@media (min-width: 1440px) {
 }

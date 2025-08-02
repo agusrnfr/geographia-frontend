@@ -25,29 +25,13 @@
 .verification-container {
     position: relative;
     z-index: 1;
-    max-width: 400px;
-    width: 100%;
+    width: fit-content;
     padding: 2rem;
     background-color: rgba(255, 255, 255, 0.9);
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     text-align: center;
-}
-
-h2 {
-    font-size: 2em;
-    font-family: "Montserrat", sans-serif;
-    margin-top: 0;
-    margin-bottom: 0.5em;
-    text-align: center;
-    color: var(--color-primario);
-    font-weight: 400;
-}
-
-p {
-    font-size: 1em;
-    color: var(--color-subtitulos);
-    text-align: center;
+    margin: 0 1em;
 }
 
 form {
@@ -95,8 +79,8 @@ input[type="text"]:focus {
 }
 
 .code-box {
-    width: 32px;
-    height: 32px;
+    width: 24px;
+    height: 24px;
     text-align: center;
     font-size: 1.5rem;
     border: 1px solid #ccc;
@@ -112,4 +96,17 @@ input[type="text"]:focus {
 
 .error {
     margin: 2px;
+}
+
+@media (min-width: 768px) {
+    .code-box {
+        width: 32px;
+        height: 32px;
+    }
+}
+
+@media (min-width: 1024px) {
+}
+
+@media (min-width: 1440px) {
 }

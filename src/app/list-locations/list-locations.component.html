@@ -1,6 +1,12 @@
 <div class="backdrop" (click)="cancel()" (keydown.escape)="cancel()">
-    <div cdkTrapFocus [@fadeInOut] class="modal" (click)="$event.stopPropagation()" role="dialog"
-        aria-labelledby="modal-title">
+    <div
+        cdkTrapFocus
+        [@fadeInOut]
+        class="modal"
+        (click)="$event.stopPropagation()"
+        role="dialog"
+        aria-labelledby="modal-title"
+    >
         <div class="title">
             <h1 tabindex="0" id="modal-title" #firstFocusElement>LOCACIONES</h1>
             <p class="type" tabindex="0">
@@ -12,10 +18,18 @@
             <p *ngIf="!paginatedLocations.length">
                 No hay locaciones disponibles.
             </p>
-            <div class="location-card" *ngFor="let location of paginatedLocations" tabindex="0"
-                (click)="goToLocation(location.id)" (keydown.enter)="goToLocation(location.id)"
-                [attr.aria-label]="'Ir a ' + location.name">
-                <img [src]="location.images[0]" alt="Imagen de {{ location.name }}" />
+            <div
+                class="location-card"
+                *ngFor="let location of paginatedLocations"
+                tabindex="0"
+                (click)="goToLocation(location.id)"
+                (keydown.enter)="goToLocation(location.id)"
+                [attr.aria-label]="'Ir a ' + location.name"
+            >
+                <img
+                    [src]="location.images[0]"
+                    alt="Imagen de {{ location.name }}"
+                />
                 <div class="location-info">
                     <h2>{{ location.name }}</h2>
                     <p>{{ location.details }}</p>
@@ -24,13 +38,23 @@
         </div>
 
         <div class="pagination">
-            <button class="button" [disabled]="currentPage === 1" (click)="goToPage(currentPage - 1)">
+            <button
+                class="button"
+                [disabled]="currentPage === 1"
+                (click)="goToPage(currentPage - 1)"
+            >
                 Anterior
             </button>
 
-            <span class="page-info" tabindex="0">Página {{ currentPage }} de {{ totalPages }}</span>
+            <span class="page-info" tabindex="0"
+                >{{ currentPage }} de {{ totalPages }}</span
+            >
 
-            <button class="button" [disabled]="currentPage === totalPages" (click)="goToPage(currentPage + 1)">
+            <button
+                class="button"
+                [disabled]="currentPage === totalPages"
+                (click)="goToPage(currentPage + 1)"
+            >
                 Siguiente
             </button>
         </div>

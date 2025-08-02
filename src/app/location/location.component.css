@@ -11,13 +11,11 @@
 }
 
 .modal {
-    display: flex;
-    width: 90%;
-    max-width: 1200px;
-    height: 80vh;
-    overflow: hidden;
+    min-height: fit-content;
+    overflow: scroll;
     font-family: "Montserrat", sans-serif;
 }
+
 .comment-pic,
 .profile-pic {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
@@ -47,13 +45,7 @@
     padding: 24px;
 }
 
-.info-left {
-    width: 60%;
-    border-right: 1px solid #ccc;
-}
-
 .comments-right {
-    width: 40%;
     display: flex;
     flex-direction: column;
 }
@@ -95,7 +87,6 @@
 }
 
 .rating {
-    display: flex;
     margin-bottom: 16px;
     align-items: center;
 }
@@ -268,4 +259,34 @@
 .profile-button:focus-visible {
     transform: scale(1.05);
     outline: unset;
+}
+
+@media (min-width: 768px) {
+    .rating {
+        display: flex;
+    }
+}
+
+@media (min-width: 1024px) {
+    .modal {
+        max-height: 80vh;
+        min-width: 864px;
+        display: flex;
+    }
+
+    .info-left {
+        width: 60%;
+
+        border-right: 1px solid #ccc;
+    }
+
+    .comments-right {
+        width: 40%;
+    }
+}
+
+@media (min-width: 1440px) {
+    .modal {
+        min-width: 1200px;
+    }
 }

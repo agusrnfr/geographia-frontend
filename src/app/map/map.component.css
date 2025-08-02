@@ -148,15 +148,15 @@ app-login-button {
 
 app-button-list-locations {
     position: absolute;
-    bottom: 35px;
-    right: 15px;
+    bottom: 75px;
+    right: 10px;
     z-index: 1000;
 }
 
 app-button-add-location {
     position: absolute;
-    bottom: 115px;
-    right: 15px;
+    bottom: 135px;
+    right: 10px;
     z-index: 1000;
 }
 
@@ -192,4 +192,22 @@ app-button-add-location {
 
 ::ng-deep .mapboxgl-ctrl-icon:hover {
     filter: brightness(0.2) contrast(1) saturate(1) grayscale(0) invert(100%);
+}
+
+@media (min-width: 768px) {
+    app-button-list-locations {
+        bottom: 35px;
+        right: 15px;
+    }
+
+    app-button-add-location {
+        bottom: 115px;
+        right: 15px;
+    }
+}
+
+@media (min-width: 1024px) {
+}
+
+@media (min-width: 1440px) {
 }
