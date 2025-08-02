@@ -13,6 +13,14 @@
                 "build": {
                     "builder": "@angular-devkit/build-angular:application",
                     "options": {
+                        "allowedCommonJsDependencies": [
+                            "mapbox-gl",
+                            "@turf/jsts",
+                            "skmeans",
+                            "concaveman",
+                            "fast-deep-equal",
+                            "earcut"
+                        ],
                         "outputPath": "dist/frontend",
                         "index": "src/index.html",
                         "browser": "src/main.ts",
@@ -21,11 +29,8 @@
                         ],
                         "tsConfig": "tsconfig.app.json",
                         "assets": [
-                            {
-                                "glob": "**/*",
-                                "input": "public",
-                                "output": "/"
-                            }
+                            "src/favicon.ico",
+                            "src/assets"
                         ],
                         "styles": [
                             "src/styles.css"
@@ -92,11 +97,8 @@
                         ],
                         "tsConfig": "tsconfig.spec.json",
                         "assets": [
-                            {
-                                "glob": "**/*",
-                                "input": "public",
-                                "output": "/"
-                            }
+                            "src/favicon.ico",
+                            "src/assets"
                         ],
                         "styles": [
                             "src/styles.css"
