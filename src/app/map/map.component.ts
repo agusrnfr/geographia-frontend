@@ -231,12 +231,14 @@ export class MapComponent {
             }
         });
 
-        this.http.get('argentina-mask.geojson').subscribe((argentina: any) => {
-            const world = bboxPolygon([-180, -90, 180, 90]);
-            this.maskGeoJSON = difference(
-                featureCollection([world, ...argentina.features])
-            );
-        });
+        this.http
+            .get('assets/argentina-mask.geojson')
+            .subscribe((argentina: any) => {
+                const world = bboxPolygon([-180, -90, 180, 90]);
+                this.maskGeoJSON = difference(
+                    featureCollection([world, ...argentina.features])
+                );
+            });
 
         this.routerSub = this.router.events
             .pipe(filter((event) => event instanceof NavigationEnd))
@@ -266,25 +268,31 @@ export class MapComponent {
     }
 
     onMapClick(event: mapboxgl.MapMouseEvent) {
-        this.http.get('argentina-mask.geojson').subscribe((argentina: any) => {
-            const clickedPoint = point([event.lngLat.lng, event.lngLat.lat]);
+        this.http
+            .get('assets/argentina-mask.geojson')
+            .subscribe((argentina: any) => {
+                const clickedPoint = point([
+                    event.lngLat.lng,
+                    event.lngLat.lat,
+                ]);
 
-            const withinArgentina = argentina.features.some((feature: any) =>
-                booleanPointInPolygon(clickedPoint, feature)
-            );
+                const withinArgentina = argentina.features.some(
+                    (feature: any) =>
+                        booleanPointInPolygon(clickedPoint, feature)
+                );
 
-            if (!withinArgentina) {
-                return;
-            }
+                if (!withinArgentina) {
+                    return;
+                }
 
-            if (this.popup) {
-                this.popup = null;
-            } else {
-                this.popup = {
-                    coordinates: [event.lngLat.lng, event.lngLat.lat],
-                };
-            }
-        });
+                if (this.popup) {
+                    this.popup = null;
+                } else {
+                    this.popup = {
+                        coordinates: [event.lngLat.lng, event.lngLat.lat],
+                    };
+                }
+            });
     }
 
     ngAfterViewInit() {
