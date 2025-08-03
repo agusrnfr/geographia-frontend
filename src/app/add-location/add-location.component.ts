@@ -54,6 +54,7 @@ export class AddLocationComponent {
     lng!: number | null;
     selectedImagePreviews: string[] = [];
     isAccesibility: boolean = false;
+    imageError: boolean = false;
 
     tags: string[] = [];
     isEditingTags = false;
@@ -165,6 +166,18 @@ export class AddLocationComponent {
     onFileChange(event: any) {
         const files: FileList = event.target.files;
         if (files.length > 0) {
+            for (const file of files) {
+                const validTypes = ['image/jpeg', 'image/jpg', 'image/png'];
+
+                if (!validTypes.includes(file.type)) {
+                    this.imageError = true;
+                    this.addLocationForm.patchValue({
+                        images: null,
+                    });
+                    return;
+                }
+            }
+            this.imageError = false;
             this.selectedImages = Array.from(files);
             this.addLocationForm.patchValue({
                 images: this.selectedImages,

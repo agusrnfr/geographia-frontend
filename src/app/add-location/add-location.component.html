@@ -136,18 +136,6 @@
                         add_photo_alternate
                     </span>
                     Agregar al menos una imagen desde el dispositivo
-                    <div
-                        *ngIf="addLocationForm.get('images')?.value.length > 20"
-                        class="error"
-                        role="alert"
-                        tabindex="0"
-                    >
-                        <div
-                            *ngIf="addLocationForm.get('images')?.errors?.['required']"
-                        >
-                            Máximo 20 imágenes permitidas.
-                        </div>
-                    </div>
                 </label>
 
                 <input
@@ -172,6 +160,17 @@
                             tabindex="0"
                         />
                     </div>
+                </div>
+                <div *ngIf="imageError" class="error" role="alert" tabindex="0">
+                    La imagen debe ser JPG, JPEG o PNG.
+                </div>
+                <div
+                    *ngIf="addLocationForm.get('images')?.value.length > 5"
+                    class="error"
+                    role="alert"
+                    tabindex="0"
+                >
+                    Máximo 5 imágenes permitidas.
                 </div>
             </div>
 
