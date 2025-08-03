@@ -57,14 +57,15 @@ export class RateLocationComponent {
             this.locationId = +params['locationId'];
         });
 
-        this.locationService
-            .getMyRating(this.locationId)
-            .subscribe((location) => {
+        this.locationService.getMyRating(this.locationId).subscribe({
+            next: (location) => {
                 if (location && location.score) {
                     this.selectedRating = location.score;
                     this.update = true;
                 }
-            });
+            },
+            error: (error) => {},
+        });
     }
 
     setRating(rating: number) {

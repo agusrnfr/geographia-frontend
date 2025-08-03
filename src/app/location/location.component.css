@@ -8,11 +8,11 @@
     align-items: center;
     justify-content: center;
     z-index: 2000;
+    overflow-y: auto;
 }
 
 .modal {
     min-height: fit-content;
-    overflow: scroll;
     font-family: "Montserrat", sans-serif;
 }
 
@@ -34,15 +34,10 @@
 }
 
 .delete_icon {
-    font-size: 40px;
+    font-size: 32px;
     color: var(--color-button-cancel);
     cursor: pointer;
     margin-right: 16px;
-}
-
-.info-left,
-.comments-right {
-    padding: 24px;
 }
 
 .comments-right {
@@ -52,8 +47,10 @@
 
 .comments-list {
     flex: 1;
-    overflow-y: auto;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
     padding-right: 8px;
+    max-height: 600px;
 }
 
 .date {
@@ -74,8 +71,8 @@
 }
 
 .profile-pic {
-    width: 48px;
-    height: 48px;
+    width: 38px;
+    height: 38px;
     border-radius: 50%;
     object-fit: cover;
 }
@@ -88,7 +85,13 @@
 
 .rating {
     margin-bottom: 16px;
-    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.stars {
+    display: flex;
 }
 
 .rating p {
@@ -98,14 +101,15 @@
     font-weight: 600;
 }
 
-.rating button {
-    margin-left: auto;
-}
-
 .rating span {
     font-size: 24px;
+    padding: 0;
     color: var(--color-button-disabled);
     cursor: default;
+}
+
+.rating button {
+    margin-top: 6px;
 }
 
 .rating .filled {
@@ -261,9 +265,144 @@
     outline: unset;
 }
 
+.profile-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.bar {
+    height: 48px;
+    background-color: transparent;
+}
+
+.modal-resume {
+    background: white;
+    border-radius: 12px;
+    max-width: 75vw;
+    padding: 2rem;
+    margin: 0 1rem;
+    z-index: 2001;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.profile-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 0.75rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+    font-family: "Montserrat", sans-serif;
+}
+
+.user-name {
+    font-weight: bold;
+    font-family: "Montserrat", sans-serif;
+    margin-bottom: 4px;
+}
+
+.user-email {
+    font-size: 0.85rem;
+    color: gray;
+    text-decoration: underline;
+}
+
+.profile-options {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.profile-options li {
+    display: flex;
+    align-items: center;
+    padding: 4px 0;
+    margin-top: 4px;
+    border-radius: 5px;
+    transition: background-color 0.2s;
+}
+
+.profile-options li p {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+    margin-left: 8px;
+}
+
+.icon-circle {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    color: white;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 0.75rem;
+}
+
+span {
+    padding: 6px;
+    color: #383838;
+    font-size: 1.85em;
+}
+
+.profile-menu:focus-visible {
+    outline: 3px solid var(--color-primario);
+    outline-offset: 2px;
+}
+
+.profile-avatar:focus-visible {
+    outline: 3px solid var(--color-primario);
+    outline-offset: 2px;
+}
+
+.user-name:focus-visible {
+    outline: 2px solid var(--color-primario);
+    outline-offset: 2px;
+    border-radius: 2px;
+}
+
+.user-email a:focus-visible {
+    outline: 2px solid var(--color-primario);
+    outline-offset: 2px;
+    border-radius: 2px;
+}
+
+.profile-options:focus-visible {
+    outline: 3px solid var(--color-primario);
+    outline-offset: 2px;
+    border-radius: 3px;
+}
+
+.profile-options li:focus-visible {
+    outline: 2px solid var(--color-primario);
+    outline-offset: 2px;
+    background-color: #eaeaea;
+}
+
 @media (min-width: 768px) {
+    .profile-pic {
+        width: 48px;
+        height: 48px;
+    }
     .rating {
-        display: flex;
+        flex-direction: row;
+        justify-content: unset;
+        align-items: center;
+    }
+
+    .rating button {
+        margin-left: auto;
+        margin-top: 0;
+    }
+    .delete_icon {
+        font-size: 40px;
     }
 }
 
@@ -274,9 +413,13 @@
         display: flex;
     }
 
+    .info-left,
+    .comments-right {
+        padding: 24px;
+    }
+
     .info-left {
         width: 60%;
-
         border-right: 1px solid #ccc;
     }
 

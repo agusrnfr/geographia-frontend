@@ -1,6 +1,15 @@
 <div class="backdrop" (click)="cancel()" (keydown.escape)="cancel()">
-    <div cdkTrapFocus [@fadeInOut] class="modal" (click)="$event.stopPropagation()" role="dialog" aria-modal="true"
-        aria-labelledby="modal-title" aria-describedby="modal-description" #PATCH>
+    <div
+        cdkTrapFocus
+        [@fadeInOut]
+        class="modal"
+        (click)="$event.stopPropagation()"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modal-title"
+        aria-describedby="modal-description"
+        #PATCH
+    >
         <div class="info-left">
             <p tabindex="0" #firstFocusElement class="date">
                 {{ location?.createdAt?.toLocaleDateString('es-AR', {
@@ -11,45 +20,47 @@
             </p>
 
             <div class="title-section">
-                <h2 id="modal-title" tabindex="0">
+                <h1 id="modal-title" tabindex="0">
                     {{ location?.name || "404 No existe la locación" }}
-                </h2>
+                </h1>
                 <div class="profile-section">
-                    <span class="material-symbols-outlined delete_icon" *ngIf="userLoggedIn?.id === location?.UserId"
-                        (click)="deleteLocation()" (keydown.enter)="deleteLocation()" aria-label="Eliminar locación"
-                        tabindex="0">
+                    <span
+                        class="material-symbols-outlined delete_icon"
+                        *ngIf="userLoggedIn?.id === location?.UserId"
+                        (click)="deleteLocation()"
+                        (keydown.enter)="deleteLocation()"
+                        aria-label="Eliminar locación"
+                        tabindex="0"
+                    >
                         delete
                     </span>
-                    <button class="profile-button" (click)="
-                            handleProfileHoverEnter(
-                                $event,
-                                userCreator?.id || -1
-                            )
-                        " (mouseenter)="
-                            handleProfileHoverEnter(
-                                $event,
-                                userCreator?.id || -1
-                            )
-                        " (keydown.enter)="
-                            handleProfileHoverEnter(
-                                $event,
-                                userCreator?.id || -1
-                            )
-                        " [attr.aria-label]="
+                    <button
+                        class="profile-button"
+                        (mouseenter)="
+                            loadUserProfile(userCreator?.id || -1, $event)
+                        "
+                        (mouseleave)="hideUserProfileImmediately()"
+                        (focus)="loadUserProfile(userCreator?.id || -1, $event)"
+                        [attr.aria-label]="
                             'Ver perfil de ' +
                             userCreator?.first_name +
                             ' ' +
                             userCreator?.last_name
-                        ">
-                        <img [src]="
+                        "
+                    >
+                        <img
+                            [src]="
                                 userCreator?.profile_image_url ||
                                 this.apiUrl + '/uploads/default_profile.jpg'
-                            " [alt]="
+                            "
+                            [alt]="
                                 'Foto de ' +
                                 userCreator?.first_name +
                                 ' ' +
                                 userCreator?.last_name
-                            " class="profile-pic" />
+                            "
+                            class="profile-pic"
+                        />
                     </button>
                 </div>
             </div>
@@ -58,107 +69,282 @@
                 {{ location?.address || "Dirección no disponible" }}
             </p>
 
-            <div class="rating" tabindex="0" role="region" [attr.aria-label]="
+            <div
+                class="rating"
+                tabindex="0"
+                role="region"
+                [attr.aria-label]="
                     'Calificación de ' +
                     location?.name +
                     ' es ' +
                     location?.averageRating
-                ">
-                <span *ngFor="let star of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]" class="material-symbols-outlined"
-                    [class.filled]="star <= (location?.averageRating ?? 0)" tabindex="-1" aria-hidden="true">
-                    star
-                </span>
-                <p>{{ location?.averageRating }}/10</p>
-                <button (click)="rateLocation()" (keydown.enter)="rateLocation()" class="button">
+                "
+            >
+                <div class="stars">
+                    <span
+                        *ngFor="let star of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]"
+                        class="material-symbols-outlined"
+                        [class.filled]="star <= (location?.averageRating ?? 0)"
+                        tabindex="-1"
+                        aria-hidden="true"
+                    >
+                        star
+                    </span>
+                    <p>{{ location?.averageRating }}/10</p>
+                </div>
+                <button
+                    (click)="rateLocation()"
+                    (keydown.enter)="rateLocation()"
+                    class="button"
+                >
                     Puntuar
                 </button>
             </div>
 
             <div class="carousel">
-                <button tabindex="0" type="button" aria-label="Imagen previa" class="arrow" (click)="prevImage()"
-                    *ngIf="(location?.images?.length || 0) > 1">
+                <button
+                    tabindex="0"
+                    type="button"
+                    aria-label="Imagen previa"
+                    class="arrow"
+                    (click)="prevImage()"
+                    *ngIf="(location?.images?.length || 0) > 1"
+                >
                     ‹
                 </button>
-                <img [src]="location?.images?.[currentImageIndex] ? location?.images?.[currentImageIndex] : this.apiUrl + '/uploads/404_error.png'"
-                    [alt]="'imagen'" />
-                <button class="arrow" type="button" aria-label="Imagen siguiente" (click)="nextImage()"
-                    *ngIf="(location?.images?.length || 0) > 1">
+                <img
+                    [src]="location?.images?.[currentImageIndex] ? location?.images?.[currentImageIndex] : this.apiUrl + '/uploads/404_error.png'"
+                    [alt]="'imagen'"
+                />
+                <button
+                    class="arrow"
+                    type="button"
+                    aria-label="Imagen siguiente"
+                    (click)="nextImage()"
+                    *ngIf="(location?.images?.length || 0) > 1"
+                >
                     ›
                 </button>
             </div>
 
             <div class="dots" *ngIf="(location?.images?.length || 0) > 1">
-                <span *ngFor="let img of this.location?.images; let i = index" [class.active]="i === currentImageIndex"
-                    role="button" tabindex="0" (click)="selectImage(i)" [attr.aria-label]="'Imagen ' + (i + 1)"></span>
+                <span
+                    *ngFor="let img of this.location?.images; let i = index"
+                    [class.active]="i === currentImageIndex"
+                    role="button"
+                    tabindex="0"
+                    (click)="selectImage(i)"
+                    [attr.aria-label]="'Imagen ' + (i + 1)"
+                ></span>
             </div>
 
-            <p class="description" id="modal-description" [tabIndex]="location?.details ? 0 : -1"
-                aria-label="Descripción de la ubicación">
+            <p
+                class="description"
+                id="modal-description"
+                [tabIndex]="location?.details ? 0 : -1"
+                aria-label="Descripción de la ubicación"
+            >
                 {{ location?.details }}
             </p>
 
             <div class="tags">
-                <span class="type-tag" tabindex="0" aria-label="Tipo de locación.">{{
-                    this.location != null
-                    ? this.location.type.charAt(0).toUpperCase() +
-                    this.location.type.slice(1).toLowerCase()
-                    : "Sin Tipo"
-                    }}</span>
-                <span *ngFor="let tag of location?.tags" class="tag" tabindex="0" aria-label="Etiqueta">{{ tag }}</span>
+                <span
+                    class="type-tag"
+                    tabindex="0"
+                    aria-label="Tipo de locación."
+                    >{{
+                        this.location != null
+                            ? this.location.type.charAt(0).toUpperCase() +
+                              this.location.type.slice(1).toLowerCase()
+                            : "Sin Tipo"
+                    }}</span
+                >
+                <span
+                    *ngFor="let tag of location?.tags"
+                    class="tag"
+                    tabindex="0"
+                    aria-label="Etiqueta"
+                    >{{ tag }}</span
+                >
             </div>
         </div>
 
-        <div class="comments-right" tabindex="0" aria-label="Sección de comentarios">
+        <div
+            class="comments-right"
+            tabindex="0"
+            aria-label="Sección de comentarios"
+        >
             <div class="comments-header">
                 <h3 tabindex="0">COMENTARIOS</h3>
                 <span class="material-symbols-outlined"> chat </span>
             </div>
             <div class="comments-list" #commentsContainer>
                 <div class="comment" *ngFor="let c of comments">
-                    <button class="profile-button" (click)="handleProfileHoverEnter($event, c.UserId)" (mouseenter)="
-                        handleProfileHoverEnter($event, c.UserId)"
-                        (keydown.enter)="handleProfileHoverEnter($event, c.UserId)" tabindex="0" [attr.aria-label]="
+                    <button
+                        class="profile-button"
+                        (mouseenter)="loadUserProfile(c.UserId, $event)"
+                        (focus)="loadUserProfile(c.UserId, $event)"
+                        (mouseleave)="hideUserProfileImmediately()"
+                        tabindex="0"
+                        [attr.aria-label]="
                             'Ver perfil de ' +
                             c.user_first_name +
                             ' ' +
                             c.user_last_name
-                        ">
-                        <img [src]="c.user_profile_image_url || this.apiUrl + '/uploads/default_profile.jpg'" [alt]="
+                        "
+                    >
+                        <img
+                            [src]="
+                                c.user_profile_image_url ||
+                                this.apiUrl + '/uploads/default_profile.jpg'
+                            "
+                            [alt]="
                                 'Foto de perfil de ' +
                                 c.user_first_name +
                                 ' ' +
                                 c.user_last_name
-                            " class="comment-pic" />
+                            "
+                            class="comment-pic"
+                        />
                     </button>
 
                     <div class="comment-body">
                         <div class="comment-meta">
-                            <strong style="line-height: 12px" tabindex="0" aria-label="Usuario">{{
-                                c.user_first_name + " " + c.user_last_name
-                                }}</strong>
+                            <strong
+                                style="line-height: 12px"
+                                tabindex="0"
+                                aria-label="Usuario"
+                                >{{
+                                    c.user_first_name + " " + c.user_last_name
+                                }}</strong
+                            >
                             <br />
-                            <small tabindex="0" aria-label="Ubicación y fecha">{{ c.comment_address }} •
+                            <small tabindex="0" aria-label="Ubicación y fecha"
+                                >{{ c.comment_address }} •
                                 {{
                                 c.createdAt.toLocaleDateString('es-AR', { year:
                                 'numeric', month: 'long', day: 'numeric', })}}
                             </small>
                         </div>
-                        <p class="comment-text" tabindex="0" aria-label="Comentario">
+                        <p
+                            class="comment-text"
+                            tabindex="0"
+                            aria-label="Comentario"
+                        >
                             {{ c.comment_text }}
                         </p>
                     </div>
                 </div>
             </div>
-            <form [formGroup]="commentForm" (ngSubmit)="onSubmitComment()" class="comment-form"
-                aria-label="Formulario para agregar un comentario" tabindex="0">
-                <img [src]="
+            <form
+                [formGroup]="commentForm"
+                (ngSubmit)="onSubmitComment()"
+                class="comment-form"
+                aria-label="Formulario para agregar un comentario"
+                tabindex="0"
+            >
+                <img
+                    [src]="
                         userLoggedIn
                             ? userLoggedIn.profile_image_url
                             : this.apiUrl + '/uploads/default_profile.jpg'
-                    " [alt]="'Foto de perfil de ' + userLoggedIn?.first_name" class="comment-pic" />
-                <input type="text" formControlName="text" placeholder="Escribe un comentario..." required />
+                    "
+                    [alt]="'Foto de perfil de ' + userLoggedIn?.first_name"
+                    class="comment-pic"
+                />
+                <input
+                    type="text"
+                    formControlName="text"
+                    placeholder="Escribe un comentario..."
+                    required
+                />
                 <button type="submit" hidden></button>
             </form>
+        </div>
+    </div>
+    <div
+        class="profile-resume-popup"
+        *ngIf="showProfileResume && hoveredUser"
+        [@fadeInOut]
+        [ngStyle]="{
+            position: 'fixed',
+            left: resumeX + 'px',
+            top: resumeY + 56 + 'px',
+            transform: 'translateX(-50%)',
+            zIndex: 3000
+        }"
+        cdkTrapFocus
+        (mouseleave)="hideUserProfile()"
+        (keydown.escape)="hideUserProfile()"
+        role="dialog"
+        aria-labelledby="profile-resume-title"
+    >
+        <div class="modal-resume">
+            <div class="profile-header">
+                <img
+                    [src]="hoveredUser.profile_image_url"
+                    class="profile-avatar"
+                />
+                <div class="user-info">
+                    <div class="user-name" tabindex="0" id="secondFocusElement">
+                        {{ hoveredUser.first_name.toUpperCase() }}
+                        {{ hoveredUser.last_name.toUpperCase() }}
+                    </div>
+                    <div class="user-email" *ngIf="hoveredUser?.show_email">
+                        <a
+                            tabindex="0"
+                            [href]="'mailto:' + hoveredUser.email"
+                            >{{ hoveredUser.email }}</a
+                        >
+                    </div>
+                </div>
+            </div>
+
+            <ul
+                class="profile-options"
+                role="menu"
+                aria-label="Informacion del perfil"
+            >
+                <li role="menuitem">
+                    <span class="material-symbols-outlined"
+                        >calendar_month</span
+                    >
+                    <p tabindex="0">
+                        Cuenta creada el
+                        {{
+                            hoveredUser.createdAt.toLocaleDateString("es-AR", {
+                                year: "numeric",
+                                month: "long",
+                                day: "numeric"
+                            }) || "Fecha no disponible"
+                        }}
+                    </p>
+                </li>
+                <li role="menuitem" *ngIf="hoveredUser?.show_birth_date">
+                    <span class="material-symbols-outlined">cake</span>
+                    <p tabindex="0">
+                        {{
+                            hoveredUser.birth_date.toLocaleDateString("es-AR", {
+                                year: "numeric",
+                                month: "long",
+                                day: "numeric"
+                            }) || "Fecha no disponible"
+                        }}
+                    </p>
+                </li>
+                <li
+                    role="menuitem"
+                    *ngIf="
+                        hoveredUser?.show_location &&
+                        hoveredUser?.address !== 'Ubicación no compartida'
+                    "
+                >
+                    <span class="material-symbols-outlined">distance</span>
+                    <p tabindex="0">
+                        Última locación conocida en {{ hoveredUser.address }}
+                    </p>
+                </li>
+            </ul>
         </div>
     </div>
 </div>

@@ -12,13 +12,9 @@ import { CloseSesionComponent } from './close-sesion/close-sesion.component';
 import { LocationComponent } from './location/location.component';
 import { ResumeLocationComponent } from './resume-location/resume-location.component';
 import { ListLocationsComponent } from './list-locations/list-locations.component';
-import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
-import { ResetPasswordComponent } from './reset-password/reset-password.component';
-import { CodeVerificationComponent } from './code-verification/code-verification.component';
 import { RecoverPasswordComponent } from './recover-password/recover-password.component';
 import { DeleteLocationConfirmationComponent } from './delete-location-confirmation/delete-location-confirmation.component';
 import { RateLocationComponent } from './rate-location/rate-location.component';
-import { ProfileResumeComponent } from './profile-resume/profile-resume.component';
 
 export const routes: Routes = [
     {
@@ -90,11 +86,6 @@ export const routes: Routes = [
                 path: 'rateLocation',
                 outlet: 'modal',
                 component: RateLocationComponent,
-            },
-            {
-                path: 'profileResume',
-                outlet: 'modal',
-                component: ProfileResumeComponent,
             },
             {
                 path: 'listLocations',

@@ -39,7 +39,6 @@ import { Comment } from '../models/comment.model';
 })
 export class LocationComponent implements OnInit {
     currentImageIndex = 0;
-    myRating: number = 0;
     commentForm!: FormGroup;
     handleProfileHover: ReturnType<typeof setTimeout> | null = null;
 
@@ -64,6 +63,10 @@ export class LocationComponent implements OnInit {
     userLoggedIn: User | null = null;
     userCreator: User | null = null;
     protected apiUrl = environment.apiUrl.slice(0, -4);
+    showProfileResume = false;
+    hoveredUser: User | null = null;
+    resumeX = 0;
+    resumeY = 0;
 
     comments: Comment[] = [];
 
@@ -73,7 +76,6 @@ export class LocationComponent implements OnInit {
         });
 
         this.route.queryParams.subscribe((params) => {
-            console.log('Query Params:', params);
             setTimeout(() => {
                 this.firstFocusElement.nativeElement.focus();
             }, 0);
@@ -179,14 +181,6 @@ export class LocationComponent implements OnInit {
                     }
                 },
             });
-
-            this.locationService
-                .getMyRating(locationId)
-                .subscribe((location) => {
-                    if (location && location.score) {
-                        this.myRating = location.score;
-                    }
-                });
         });
 
         this.userService.getCurrentUser().subscribe({
@@ -346,7 +340,7 @@ export class LocationComponent implements OnInit {
     }
 
     cancel() {
-        this.router.navigate(['/map']);
+        if (!this.showProfileResume) this.router.navigate(['/map']);
     }
 
     deleteLocation() {
@@ -366,44 +360,6 @@ export class LocationComponent implements OnInit {
                 },
             }
         );
-    }
-
-    handleProfileHoverEnter(event: Event, userId: number) {
-        if (this.handleProfileHover) {
-            clearTimeout(this.handleProfileHover);
-            this.handleProfileHover = null;
-        }
-
-        this.handleProfileHover = setTimeout(() => {
-            const element = event.target as HTMLElement;
-
-            if (!element || typeof element.getBoundingClientRect !== 'function')
-                return;
-
-            const rect = element.getBoundingClientRect();
-            const elemX = rect.left + rect.width / 2;
-            const elemY = rect.top;
-
-            this.router.navigate(
-                [
-                    '/map',
-                    {
-                        outlets: {
-                            popup: ['location'],
-                            modal: ['profileResume'],
-                        },
-                    },
-                ],
-                {
-                    queryParams: {
-                        userId,
-                        locationId: this.location?.id,
-                        elemX,
-                        elemY,
-                    },
-                }
-            );
-        }, 500);
     }
 
     rateLocation() {
@@ -439,5 +395,64 @@ export class LocationComponent implements OnInit {
                 },
             }
         );
+    }
+
+    loadUserProfile(userId: number, event: Event) {
+        if (this.handleProfileHover) clearTimeout(this.handleProfileHover);
+
+        this.handleProfileHover = setTimeout(() => {
+            const target = event.target as HTMLElement;
+            const rect = target.getBoundingClientRect();
+            this.resumeX = rect.left + rect.width / 2;
+            this.resumeY = rect.top;
+
+            this.userService.getUserById(userId).subscribe((user) => {
+                user.createdAt = new Date(user.createdAt);
+                if (user.show_birth_date) {
+                    user.birth_date = this.parseLocalDate(user.birth_date);
+                }
+
+                this.hoveredUser = {
+                    ...user,
+                    profile_image_url:
+                        !environment.production ||
+                        user.profile_image_url.includes('default_profile.jpg')
+                            ? this.apiUrl + user.profile_image_url
+                            : user.profile_image_url,
+                };
+
+                this.showProfileResume = true;
+
+                setTimeout(() => {
+                    const element =
+                        document.getElementById('secondFocusElement');
+                    element!.focus();
+                }, 100);
+            });
+        }, 1000);
+    }
+
+    hideUserProfile() {
+        if (this.handleProfileHover) clearTimeout(this.handleProfileHover);
+        this.handleProfileHover = setTimeout(() => {
+            this.showProfileResume = false;
+        }, 300);
+        setTimeout(() => {
+            this.firstFocusElement.nativeElement.focus();
+        }, 300);
+    }
+
+    hideUserProfileImmediately() {
+        if (this.handleProfileHover && !this.showProfileResume) {
+            clearTimeout(this.handleProfileHover);
+            this.handleProfileHover = setTimeout(() => {
+                this.showProfileResume = false;
+            }, 300);
+        }
+    }
+
+    parseLocalDate(dateString: string): Date {
+        const [year, month, day] = dateString.split('-').map(Number);
+        return new Date(year, month - 1, day);
     }
 }
