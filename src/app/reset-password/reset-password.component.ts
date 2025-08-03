@@ -97,23 +97,55 @@ export class ResetPasswordComponent {
                     });
                     this.router.navigate(['/login']);
                 },
-                error: () => {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Error',
-                        text: 'Ocurrió un problema al restablecer la contraseña.',
-                        timer: 4000,
-                        timerProgressBar: true,
-                        showCloseButton: true,
-                        showConfirmButton: false,
-                        customClass: {
-                            popup: 'montserrat-swal',
-                            closeButton: 'montserrat-close',
-                        },
-                    });
+                error: (error) => {
+                    if (error.status === 401) {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: 'El tiempo para restablecer la contraseña ha expirado o su token es inválido.',
+                            timer: 4000,
+                            timerProgressBar: true,
+                            showCloseButton: true,
+                            showConfirmButton: false,
+                            customClass: {
+                                popup: 'montserrat-swal',
+                                closeButton: 'montserrat-close',
+                            },
+                        });
+                        this.backToCode.emit();
+                    } else if (error.status === 400) {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: 'La nueva contraseña no puede ser igual a la contraseña anterior.',
+                            timer: 4000,
+                            timerProgressBar: true,
+                            showCloseButton: true,
+                            showConfirmButton: false,
+                            customClass: {
+                                popup: 'montserrat-swal',
+                                closeButton: 'montserrat-close',
+                            },
+                        });
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: 'Ocurrió un error inesperado. Por favor, inténtalo de nuevo más tarde.',
+                            timer: 4000,
+                            timerProgressBar: true,
+                            showCloseButton: true,
+                            showConfirmButton: false,
+                            customClass: {
+                                popup: 'montserrat-swal',
+                                closeButton: 'montserrat-close',
+                            },
+                        });
+                    }
                 },
             });
+        } else {
+            console.log('Form is invalid');
         }
-        console.log('Form is invalid');
     }
 }
