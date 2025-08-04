@@ -1,5 +1,5 @@
 .search-bar-wrapper {
-    width: 35vw;
+    width: 75vw;
     max-width: 100%;
     box-sizing: border-box;
 }
@@ -7,7 +7,7 @@
 .search-bar-container {
     display: flex;
     align-items: center;
-    padding: 12px 20px;
+    padding: 8px 16px;
     border-radius: 8px;
     width: 100%;
     background-color: #ffffff;
@@ -19,7 +19,7 @@
 .search-bar-container input {
     font-family: "Montserrat", sans-serif;
     font-weight: 400;
-    font-size: 1.15rem;
+    font-size: 1rem;
     width: 100%;
     border: none;
     outline: none;
@@ -34,7 +34,7 @@
 .search {
     color: var(--color-texto);
     margin-right: 8px;
-    font-size: 28px;
+    font-size: 24px;
 }
 
 .recents-dropdown {
@@ -44,7 +44,7 @@
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     margin-top: 8px;
     z-index: 10;
-    padding: 20px;
+    padding: 16px;
     max-height: 300px;
     overflow-y: auto;
     font-weight: 200;
@@ -56,10 +56,7 @@
 }
 
 .recents-dropdown h1 {
-    font-size: 1.2rem;
-    color: var(--color-texto);
-    margin-bottom: 5px;
-    font-family: "Montserrat", sans-serif;
+    font-size: 1.1rem;
 }
 
 .recents-dropdown ul {
@@ -89,8 +86,10 @@
 }
 
 .recent-icon {
-    width: 48px;
-    height: 48px;
+    min-height: 42px;
+    min-width: 42px;
+    height: 42px;
+    width: 42px;
     border-radius: 50%;
     object-fit: cover;
 }
@@ -106,51 +105,33 @@
     font-style: italic;
     color: var(--color-texto);
     font-weight: 400;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
-@media (max-width: 900px) {
+@media (min-width: 768px) {
     .search-bar-wrapper {
-        width: 50vw;
-        min-width: 240px;
+        width: 45vw;
     }
-
-    .search-bar-container {
-        padding: 6px 10px;
-        border-radius: 6px;
-    }
-
     .search-bar-container input {
-        font-size: 0.95rem;
+        font-size: 1.15rem;
+    }
+    .search-bar-container {
+        padding: 12px 20px;
     }
 
     .search {
-        font-size: 20px;
-        margin-right: 6px;
+        font-size: 28px;
     }
 
-    .recents-dropdown {
-        font-size: 0.9rem;
-        padding: 8px;
-        border-radius: 0 0 6px 6px;
+    .recents-dropdown h1 {
+        font-size: 1.2rem;
     }
+}
 
-    .recent-item {
-        padding: 6px 2px;
-        font-size: 0.9rem;
-    }
+@media (min-width: 1024px) {
+}
 
-    .recent-icon {
-        width: 34px;
-        height: 34px;
-    }
-
-    .recent-title {
-        margin-left: 8px;
-        margin-right: 6px;
-        font-size: 0.9rem;
-    }
-
-    .recent-location {
-        font-size: 0.85rem;
-    }
+@media (min-width: 1440px) {
 }

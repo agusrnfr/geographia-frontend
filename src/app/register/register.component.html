@@ -1,88 +1,188 @@
 <div class="register-container">
-    <section class="register-form-section" aria-label="Formulario de registro de Geographia">
+    <section
+        class="register-form-section"
+        aria-label="Formulario de registro de Geographia"
+    >
         <header class="header">
-            <h1 class="company-name" tabindex="0" (click)="goToMap()">GEOGRAPHIA</h1>
+            <h1 class="company-name" tabindex="0" (click)="goToMap()">
+                GEOGRAPHIA
+            </h1>
         </header>
 
         <div class="form-content">
             <h2 class="title" tabindex="0">Registro</h2>
             <p class="subtitle" tabindex="0">
                 Registrándote estás aceptando nuestros
-                <a href="#" target="_blank" rel="noopener noreferrer" aria-describedby="terms-desc">Términos y Políticas
-                    de Privacidad</a>
+                <a
+                    href="#"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-describedby="terms-desc"
+                    >Términos y Políticas de Privacidad</a
+                >
             </p>
-            <span id="terms-desc" class="sr-only">Se abrirá en una nueva ventana</span>
+            <span id="terms-desc" class="sr-only"
+                >Se abrirá en una nueva ventana</span
+            >
 
-            <nav class="tab-switch" role="tablist" aria-label="Navegación entre Inicio y Registro">
-                <span class="inactive" role="tab" tabindex="0" aria-selected="false" (click)="goToLogin()"
+            <nav
+                class="tab-switch"
+                role="tablist"
+                aria-label="Navegación entre Inicio y Registro"
+            >
+                <span
+                    class="inactive"
+                    role="tab"
+                    tabindex="0"
+                    aria-selected="false"
+                    (click)="goToLogin()"
                     (keydown.enter)="goToLogin()"
-                    aria-label="Apreta el boton Enter para ir a la pestaña de Inicio">Inicio</span>
-                <span class="active" role="tab" tabindex="-1" aria-selected="true" aria-current="page">Registro</span>
+                    aria-label="Apreta el boton Enter para ir a la pestaña de Inicio"
+                    >Inicio</span
+                >
+                <span
+                    class="active"
+                    role="tab"
+                    tabindex="-1"
+                    aria-selected="true"
+                    aria-current="page"
+                    >Registro</span
+                >
             </nav>
-            <form aria-label="Formulario de registro" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+            <form
+                aria-label="Formulario de registro"
+                [formGroup]="registerForm"
+                (ngSubmit)="onSubmit()"
+            >
                 <div class="wrapper">
-                    <label for="email" class="sr-only">Correo Electrónico</label>
-                    <span class="material-symbols-outlined" aria-hidden="true">mail</span>
-                    <input id="email" type="email" placeholder="Correo Electrónico" required autocomplete="email"
-                        aria-required="true" formControlName="email" />
+                    <label for="email" class="sr-only"
+                        >Correo Electrónico</label
+                    >
+                    <span class="material-symbols-outlined" aria-hidden="true"
+                        >mail</span
+                    >
+                    <input
+                        id="email"
+                        type="email"
+                        placeholder="Correo Electrónico"
+                        required
+                        autocomplete="email"
+                        aria-required="true"
+                        formControlName="email"
+                    />
                 </div>
-                <div *ngIf="
+                <div
+                    *ngIf="
                         registerForm.get('email')?.touched &&
                         registerForm.get('email')?.invalid
-                    " class="error" role="alert" tabindex="0">
-                    <div *ngIf="registerForm.get('email')?.errors?.['required']">
+                    "
+                    class="error"
+                    role="alert"
+                    tabindex="0"
+                >
+                    <div
+                        *ngIf="registerForm.get('email')?.errors?.['required']"
+                    >
                         Este campo es obligatorio.
                     </div>
                     <div *ngIf="registerForm.get('email')?.errors?.['email']">
                         Debe ser un correo electrónico válido.
                     </div>
-                    <div *ngIf="registerForm.get('email')?.errors?.['maxLength']">
+                    <div
+                        *ngIf="registerForm.get('email')?.errors?.['maxLength']"
+                    >
                         El correo electrónico no puede exceder los 50
                         caracteres.
                     </div>
                 </div>
 
-                <div style="display: flex; gap: 12px">
+                <div class="name-fields">
                     <div>
                         <div class="wrapper" style="flex: 1">
                             <label for="nombre" class="sr-only">Nombre</label>
-                            <span class="material-symbols-outlined" aria-hidden="true">person</span>
-                            <input id="nombre" type="text" placeholder="Nombre" required autocomplete="given-name"
-                                aria-required="true" formControlName="first_name" />
+                            <span
+                                class="material-symbols-outlined"
+                                aria-hidden="true"
+                                >person</span
+                            >
+                            <input
+                                id="nombre"
+                                type="text"
+                                placeholder="Nombre"
+                                required
+                                autocomplete="given-name"
+                                aria-required="true"
+                                formControlName="first_name"
+                            />
                         </div>
-                        <div *ngIf="
+                        <div
+                            *ngIf="
                                 registerForm.get('first_name')?.touched &&
                                 registerForm.get('first_name')?.invalid
-                            " class="error" role="alert" tabindex="0">
-                            <div *ngIf="registerForm.get('first_name')?.errors?.['required']">
+                            "
+                            class="error"
+                            role="alert"
+                            tabindex="0"
+                        >
+                            <div
+                                *ngIf="registerForm.get('first_name')?.errors?.['required']"
+                            >
                                 Este campo es obligatorio.
                             </div>
-                            <div *ngIf="registerForm.get('first_name')?.errors?.['minlength']">
+                            <div
+                                *ngIf="registerForm.get('first_name')?.errors?.['minlength']"
+                            >
                                 Debe tener al menos 2 caracteres.
                             </div>
-                            <div *ngIf="registerForm.get('first_name')?.errors?.['pattern']">
+                            <div
+                                *ngIf="registerForm.get('first_name')?.errors?.['pattern']"
+                            >
                                 Solo se permiten letras y espacios.
                             </div>
                         </div>
                     </div>
                     <div>
                         <div class="wrapper" style="flex: 1">
-                            <label for="apellido" class="sr-only">Apellido</label>
-                            <span class="material-symbols-outlined" aria-hidden="true">person</span>
-                            <input id="apellido" type="text" placeholder="Apellido" required autocomplete="family-name"
-                                aria-required="true" formControlName="last_name" />
+                            <label for="apellido" class="sr-only"
+                                >Apellido</label
+                            >
+                            <span
+                                class="material-symbols-outlined"
+                                aria-hidden="true"
+                                >person</span
+                            >
+                            <input
+                                id="apellido"
+                                type="text"
+                                placeholder="Apellido"
+                                required
+                                autocomplete="family-name"
+                                aria-required="true"
+                                formControlName="last_name"
+                            />
                         </div>
-                        <div *ngIf="
+                        <div
+                            *ngIf="
                                 registerForm.get('last_name')?.touched &&
                                 registerForm.get('last_name')?.invalid
-                            " class="error" role="alert" tabindex="0">
-                            <div *ngIf="registerForm.get('last_name')?.errors?.['required']">
+                            "
+                            class="error"
+                            role="alert"
+                            tabindex="0"
+                        >
+                            <div
+                                *ngIf="registerForm.get('last_name')?.errors?.['required']"
+                            >
                                 Este campo es obligatorio.
                             </div>
-                            <div *ngIf="registerForm.get('last_name')?.errors?.['minlength']">
+                            <div
+                                *ngIf="registerForm.get('last_name')?.errors?.['minlength']"
+                            >
                                 Debe tener al menos 2 caracteres.
                             </div>
-                            <div *ngIf="registerForm.get('last_name')?.errors?.['pattern']">
+                            <div
+                                *ngIf="registerForm.get('last_name')?.errors?.['pattern']"
+                            >
                                 Solo se permiten letras y espacios.
                             </div>
                         </div>
@@ -90,19 +190,40 @@
                 </div>
                 <div>
                     <div class="wrapper date-wrapper">
-                        <label for="fecha-nacimiento" class="sr-only">Fecha de nacimiento</label>
-                        <span class="material-symbols-outlined" aria-hidden="true">calendar_month</span>
-                        <input id="fecha-nacimiento" type="date" placeholder="Fecha de nacimiento" required
-                            aria-required="true" formControlName="birth_date" />
+                        <label for="fecha-nacimiento" class="sr-only"
+                            >Fecha de nacimiento</label
+                        >
+                        <span
+                            class="material-symbols-outlined"
+                            aria-hidden="true"
+                            >calendar_month</span
+                        >
+                        <input
+                            id="fecha-nacimiento"
+                            type="date"
+                            placeholder="Fecha de nacimiento"
+                            required
+                            aria-required="true"
+                            formControlName="birth_date"
+                        />
                     </div>
-                    <div *ngIf="
+                    <div
+                        *ngIf="
                             registerForm.get('birth_date')?.touched &&
                             registerForm.get('birth_date')?.invalid
-                        " class="error" role="alert" tabindex="0">
-                        <div *ngIf="registerForm.get('birth_date')?.errors?.['required']">
+                        "
+                        class="error"
+                        role="alert"
+                        tabindex="0"
+                    >
+                        <div
+                            *ngIf="registerForm.get('birth_date')?.errors?.['required']"
+                        >
                             Este campo es obligatorio.
                         </div>
-                        <div *ngIf="registerForm.get('birth_date')?.errors?.['minAge']">
+                        <div
+                            *ngIf="registerForm.get('birth_date')?.errors?.['minAge']"
+                        >
                             Debes tener al menos 13 años para registrarte.
                         </div>
                     </div>
@@ -110,109 +231,142 @@
                 <div>
                     <div class="wrapper">
                         <label for="password" class="sr-only">Contraseña</label>
-                        <span class="material-symbols-outlined" aria-hidden="true">lock</span>
-                        <input id="password" [type]="showPassword ? 'text' : 'password'" placeholder="Contraseña"
-                            required aria-required="true" autocomplete="new-password" formControlName="password" />
-                        <button type="button" class="toggle-password" [attr.aria-pressed]="showPassword"
+                        <span
+                            class="material-symbols-outlined"
+                            aria-hidden="true"
+                            >lock</span
+                        >
+                        <input
+                            id="password"
+                            [type]="showPassword ? 'text' : 'password'"
+                            placeholder="Contraseña"
+                            required
+                            aria-required="true"
+                            autocomplete="new-password"
+                            formControlName="password"
+                        />
+                        <button
+                            type="button"
+                            class="toggle-password"
+                            [attr.aria-pressed]="showPassword"
                             [attr.aria-label]="
                                 showPassword
                                     ? 'Ocultar contraseña'
                                     : 'Mostrar contraseña'
-                            " (click)="togglePassword()">
+                            "
+                            (click)="togglePassword()"
+                        >
                             <span class="material-symbols-outlined">
                                 {{
-                                showPassword
-                                ? "visibility_off"
-                                : "visibility"
+                                    showPassword
+                                        ? "visibility_off"
+                                        : "visibility"
                                 }}
                             </span>
                         </button>
                     </div>
-                    <div *ngIf="
+                    <div
+                        *ngIf="
                             registerForm.get('password')?.touched &&
                             registerForm.get('password')?.invalid
-                        " class="error" role="alert" tabindex="0">
-                        <div *ngIf="registerForm.get('password')?.errors?.['required']">
+                        "
+                        class="error"
+                        role="alert"
+                        tabindex="0"
+                    >
+                        <div
+                            *ngIf="registerForm.get('password')?.errors?.['required']"
+                        >
                             Este campo es obligatorio.
                         </div>
-                        <div *ngIf="registerForm.get('password')?.errors?.['minlength']">
+                        <div
+                            *ngIf="registerForm.get('password')?.errors?.['minlength']"
+                        >
                             La contraseña debe tener al menos 8 caracteres.
                         </div>
                     </div>
                 </div>
                 <div>
                     <div class="wrapper">
-                        <label for="repeat-password" class="sr-only">Repetir contraseña</label>
-                        <span class="material-symbols-outlined" aria-hidden="true">lock</span>
-                        <input id="repeat-password" [type]="showRepeatPassword ? 'text' : 'password'"
-                            placeholder="Repetir contraseña" required aria-required="true" autocomplete="new-password"
-                            formControlName="repeatPassword" />
-                        <button type="button" class="toggle-password" [attr.aria-pressed]="showRepeatPassword"
+                        <label for="repeat-password" class="sr-only"
+                            >Repetir contraseña</label
+                        >
+                        <span
+                            class="material-symbols-outlined"
+                            aria-hidden="true"
+                            >lock</span
+                        >
+                        <input
+                            id="repeat-password"
+                            [type]="showRepeatPassword ? 'text' : 'password'"
+                            placeholder="Repetir contraseña"
+                            required
+                            aria-required="true"
+                            autocomplete="new-password"
+                            formControlName="repeatPassword"
+                        />
+                        <button
+                            type="button"
+                            class="toggle-password"
+                            [attr.aria-pressed]="showRepeatPassword"
                             [attr.aria-label]="
                                 showRepeatPassword
                                     ? 'Ocultar contraseña'
                                     : 'Mostrar contraseña'
-                            " (click)="toggleRepeatPassword()">
+                            "
+                            (click)="toggleRepeatPassword()"
+                        >
                             <span class="material-symbols-outlined">
                                 {{
-                                showRepeatPassword
-                                ? "visibility_off"
-                                : "visibility"
+                                    showRepeatPassword
+                                        ? "visibility_off"
+                                        : "visibility"
                                 }}
                             </span>
                         </button>
                     </div>
-                    <div *ngIf="
+                    <div
+                        *ngIf="
                             registerForm.get('repeatPassword')?.touched &&
                             registerForm.get('repeatPassword')?.invalid
-                        " class="error" role="alert" tabindex="0">
-                        <div *ngIf="registerForm.get('repeatPassword')?.errors?.['required']">
+                        "
+                        class="error"
+                        role="alert"
+                        tabindex="0"
+                    >
+                        <div
+                            *ngIf="registerForm.get('repeatPassword')?.errors?.['required']"
+                        >
                             Este campo es obligatorio.
                         </div>
-                        <div *ngIf="registerForm.get('repeatPassword')?.errors?.['minlength']">
+                        <div
+                            *ngIf="registerForm.get('repeatPassword')?.errors?.['minlength']"
+                        >
                             La contraseña debe tener al menos 8 caracteres.
                         </div>
                     </div>
 
-                    <div *ngIf="registerForm.errors?.['passwordMismatch'] && registerForm.get('repeatPassword')?.touched"
-                        class="error" role="alert" tabindex="0">
+                    <div
+                        *ngIf="registerForm.errors?.['passwordMismatch'] && registerForm.get('repeatPassword')?.touched"
+                        class="error"
+                        role="alert"
+                        tabindex="0"
+                    >
                         Las contraseñas no coinciden.
                     </div>
                 </div>
 
-                <button type="submit" class="button register-button" aria-label="Registrarse">
+                <button
+                    type="submit"
+                    class="button register-button"
+                    aria-label="Registrarse"
+                >
                     Registrarse
                 </button>
-
-                <button class="gsi-material-button" aria-label="Registrarse con Google">
-                    <div class="gsi-material-button-state"></div>
-                    <div class="gsi-material-button-content-wrapper">
-                        <div class="gsi-material-button-icon">
-                            <svg tabindex="0" aria-label="Icono de Google" version="1.1"
-                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"
-                                xmlns:xlink="http://www.w3.org/1999/xlink" style="display: block">
-                                <path fill="#EA4335"
-                                    d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z">
-                                </path>
-                                <path fill="#4285F4"
-                                    d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z">
-                                </path>
-                                <path fill="#FBBC05"
-                                    d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z">
-                                </path>
-                                <path fill="#34A853"
-                                    d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z">
-                                </path>
-                                <path fill="none" d="M0 0h48v48H0z"></path>
-                            </svg>
-                        </div>
-                    </div>
-                </button>
-                <span class="google-info" aria-live="polite" aria-atomic="true" tabindex="0">Regístrate con
-                    Google</span>
             </form>
         </div>
     </section>
+    <div class="gsi-material-button-state"></div>
 
     <section class="register-image-section" aria-hidden="true">
         <img src="/map.jpeg" alt="Mapa geográfico como imagen decorativa" />

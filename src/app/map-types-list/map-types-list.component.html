@@ -1,25 +1,44 @@
 <div class="map-filter-wrapper">
-    <span class="material-symbols-outlined manage_search" tabindex="0" (click)="toggleMenu()"
+    <span
+        class="material-symbols-outlined manage_search"
+        tabindex="0"
+        (click)="toggleMenu()"
         (keydown.enter)="toggleMenu()"
-        [attr.aria-label]=" openMenu ? 'Cerrar menú de tipos de mapa' : 'Abrir menú de tipos de mapa' " role="button">
-        <span aria-hidden="true">manage_search</span>
-    </span>
-
-    <span class="map-filter-label" aria-hidden="true">
-        <!--    <span class="map-filter-label" [class.visible]="openMenu">  -->
-        Tipos de mapa
+        [attr.aria-label]="
+            openMenu
+                ? 'Cerrar menú de tipos de mapa'
+                : 'Abrir menú de tipos de mapa'
+        "
+        role="button"
+    >
+        menu_open
     </span>
 </div>
-
 
 <div aria-live="polite" class="sr-only">
     {{ selectedAnnouncement }}
 </div>
-<ul *ngIf="openMenu" [class.visible]="openMenu" [@fadeInOut] role="listbox" class="map-types-menu"
-    aria-label="Menú de tipos de mapa" tabindex="0" (keydown)="handleKeydown($event)">
-    <li class="map-types" *ngFor="let type of mapTypes" (click)="selectType(type)" (keydown.enter)="selectType(type)"
-        [class.active]="type === selectedType" [attr.aria-selected]="type === selectedType"
-        [attr.aria-label]="'Seleccionar tipo de mapa: ' + type" tabindex="0" role="option">
+<ul
+    *ngIf="openMenu"
+    [class.visible]="openMenu"
+    [@fadeInOut]
+    role="listbox"
+    class="map-types-menu"
+    aria-label="Menú de tipos de mapa"
+    tabindex="0"
+    (keydown)="handleKeydown($event)"
+>
+    <li
+        class="map-types"
+        *ngFor="let type of mapTypes"
+        (click)="selectType(type)"
+        (keydown.enter)="selectType(type)"
+        [class.active]="type === selectedType"
+        [attr.aria-selected]="type === selectedType"
+        [attr.aria-label]="'Seleccionar tipo de mapa: ' + type"
+        tabindex="0"
+        role="option"
+    >
         {{ type }}
     </li>
 </ul>

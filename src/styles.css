@@ -42,6 +42,16 @@ h1 {
     margin-bottom: 4px;
 }
 
+h3 {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    font-size: 1.25em;
+    color: var(--color-texto);
+    margin: 0;
+    margin-bottom: 8px;
+    padding: 0;
+}
+
 p {
     font-family: "Montserrat", sans-serif;
     font-weight: 400;
@@ -165,6 +175,7 @@ input {
     color: var(--color-texto);
     font-weight: 400;
     display: flex;
+    font-size: 1em;
     align-items: center;
 }
 
@@ -349,6 +360,10 @@ html {
         font-size: 2em;
     }
 
+    h3 {
+        font-size: 1.5em;
+    }
+
     label {
         font-size: 1.2em;
     }
@@ -372,6 +387,10 @@ html {
     .error {
         font-size: 0.85em;
         margin-bottom: 16px;
+    }
+
+    .wrapper > span {
+        font-size: 1.15em;
     }
 }
 

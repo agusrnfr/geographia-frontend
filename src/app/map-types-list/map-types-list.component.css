@@ -1,5 +1,5 @@
 .manage_search {
-    font-size: 36px;
+    font-size: 24px;
     padding: 12px;
     background-color: #ffffff;
     border-radius: 12px;
@@ -42,7 +42,7 @@
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
     text-align: center;
     margin-top: 15px;
-    font-size: 1.25em;
+    font-size: 1em;
     transition: all 0.3s ease;
 }
 
@@ -67,47 +67,23 @@
     display: inline-block;
 }
 
-.map-filter-label {
-    position: absolute;
-    left: 110%;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: #ffffff;
-    border: 1px solid #d8d8d8;
-    color: var(--color-subtitulos);
-    padding: 6px 12px;
-    font-family: "Montserrat", sans-serif;
-    font-size: 1em;
-    font-weight: 500;
-    border-radius: 6px;
-    white-space: nowrap;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease;
-    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
-    margin-left: 8px;
-    pointer-events: none;
-    z-index: 10;
-}
-
 .map-filter-wrapper:hover .map-filter-label,
 .map-filter-label.visible {
     opacity: 1;
     visibility: visible;
 }
 
-@media (max-width: 900px) {
-    .map-types {
-        padding: 8px 16px;
-        font-size: 1em;
-    }
-
+@media (min-width: 768px) {
     .manage_search {
-        font-size: 28px;
-        padding: 8px;
+        font-size: 32px;
     }
+    .map-types {
+        font-size: 1.15em;
+    }
+}
 
-    .map-filter-label {
-        display: none;
-    }
+@media (min-width: 1024px) {
+}
+
+@media (min-width: 1440px) {
 }

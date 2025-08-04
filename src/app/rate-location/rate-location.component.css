@@ -10,11 +10,6 @@
     z-index: 2000;
 }
 
-.modal {
-    min-width: 425px;
-    max-width: 425px;
-}
-
 .title {
     display: flex;
     margin-bottom: 16px;
@@ -24,32 +19,7 @@
 
 .title h1 {
     margin: 0;
-}
-
-@media (max-width: 900px) {
-    .modal {
-        width: 70%;
-        max-width: 100%;
-        min-width: unset;
-        padding: 1.5rem 1rem;
-    }
-
-    .title h1 {
-        font-size: 0.6em;
-    }
-
-    .delete {
-        font-size: 0.7em;
-    }
-
-    .subtitle {
-        font-size: 0.95em;
-    }
-
-    .buttons {
-        flex-direction: column;
-        gap: 10px;
-    }
+    font-size: 1.25em;
 }
 
 .stars {
@@ -60,7 +30,7 @@
 }
 
 .star {
-    font-size: 32px;
+    font-size: 28px;
     color: #ccc;
     position: relative;
 }
@@ -71,13 +41,31 @@
 }
 
 .button {
-    font-size: 1.2em;
+    font-size: 1em;
     font-weight: 700;
 }
 
 .star-title {
     color: #ba8e23;
     text-shadow: 0 0 5px gold;
-    font-size: 2.5em;
+    font-size: 2em;
     margin-right: 8px;
+}
+
+@media (min-width: 768px) {
+    .button {
+        font-size: 1.2em;
+    }
+    .star-title {
+        font-size: 2.5em;
+    }
+    .star {
+        font-size: 32px;
+    }
+}
+
+@media (min-width: 1024px) {
+}
+
+@media (min-width: 1440px) {
 }

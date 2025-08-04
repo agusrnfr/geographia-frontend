@@ -1,10 +1,39 @@
 .button {
-    font-weight: 700;
-    font-size: 1.2em;
     background-color: var(--color-button);
-    margin-top: 12px;
 }
 
 .button:hover {
     background-color: var(--color-button-hover);
+}
+
+.login-text {
+    display: none;
+}
+
+.button {
+    padding: 8px 10px;
+}
+
+@media (min-width: 768px) {
+    .button {
+        font-size: 1.2em;
+        padding: 8px 16px;
+    }
+    .login-icon {
+        display: none;
+    }
+
+    .login-text {
+        display: block;
+        font-family: "Montserrat", sans-serif;
+        font-weight: 700;
+        color: white;
+        font-size: 1em;
+    }
+}
+
+@media (min-width: 1024px) {
+}
+
+@media (min-width: 1440px) {
 }

@@ -43,6 +43,7 @@
 .comments-right {
     display: flex;
     flex-direction: column;
+    margin-top: 24px;
 }
 
 .comments-list {
@@ -92,6 +93,7 @@
 
 .stars {
     display: flex;
+    margin-bottom: 12px;
 }
 
 .rating p {
@@ -109,7 +111,7 @@
 }
 
 .rating button {
-    margin-top: 6px;
+    margin-bottom: 8px;
 }
 
 .rating .filled {
@@ -119,7 +121,7 @@
 
 .carousel {
     position: relative;
-    margin: 16px 0;
+    margin-bottom: 16px;
     text-align: center;
 }
 
@@ -157,9 +159,9 @@
 
 .dots span {
     display: inline-block;
-    width: 10px;
-    height: 10px;
-    margin: 0 4px;
+    width: 3px;
+    height: 3px;
+    margin: 0 2px;
     background-color: #ccc;
     border-radius: 50%;
     cursor: pointer;
@@ -172,6 +174,7 @@
 .description {
     margin: 16px 0;
     color: #444;
+    word-break: break-all;
 }
 
 .tags {
@@ -391,6 +394,11 @@ span {
         width: 48px;
         height: 48px;
     }
+
+    .modal {
+        min-height: 700px;
+    }
+
     .rating {
         flex-direction: row;
         justify-content: unset;
@@ -399,7 +407,7 @@ span {
 
     .rating button {
         margin-left: auto;
-        margin-top: 0;
+        margin-bottom: 0px;
     }
     .delete_icon {
         font-size: 40px;
@@ -411,6 +419,10 @@ span {
         max-height: 80vh;
         min-width: 864px;
         display: flex;
+    }
+
+    .stars {
+        margin-bottom: 0px;
     }
 
     .info-left,
@@ -425,6 +437,11 @@ span {
 
     .comments-right {
         width: 40%;
+        margin-top: 0px;
+    }
+
+    .carousel {
+        margin-top: 16px;
     }
 }
 

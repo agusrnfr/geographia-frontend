@@ -1,40 +1,87 @@
 <div class="login-container">
-    <section class="login-form-section" aria-label="Formulario de inicio de sesión de Geographia">
+    <section
+        class="login-form-section"
+        aria-label="Formulario de inicio de sesión de Geographia"
+    >
         <header class="header">
             <!--<img src="logo.png" alt="Logo de Geographia" class="logo" />-->
-            <div class="company-name" tabindex="0" (click)="goToMap()">GEOGRAPHIA</div>
+            <div class="company-name" tabindex="0" (click)="goToMap()">
+                GEOGRAPHIA
+            </div>
         </header>
 
         <div class="form-content">
             <h2 class="title" tabindex="0">Inicio</h2>
             <p class="subtitle" tabindex="0">
                 Iniciando sesión estás aceptando nuestros
-                <a href="#" target="_blank" rel="noopener noreferrer" aria-describedby="terms-desc">Términos y Políticas
-                    de Privacidad</a>
+                <a
+                    href="#"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-describedby="terms-desc"
+                    >Términos y Políticas de Privacidad</a
+                >
             </p>
-            <span id="terms-desc" class="sr-only">Se abrirá en una nueva ventana</span>
+            <span id="terms-desc" class="sr-only"
+                >Se abrirá en una nueva ventana</span
+            >
 
-            <nav class="tab-switch" role="tablist" aria-label="Navegación entre Inicio y Registro">
-                <span class="active" role="tab" aria-selected="true" tabindex="-1">
+            <nav
+                class="tab-switch"
+                role="tablist"
+                aria-label="Navegación entre Inicio y Registro"
+            >
+                <span
+                    class="active"
+                    role="tab"
+                    aria-selected="true"
+                    tabindex="-1"
+                >
                     Inicio
                 </span>
-                <span class="inactive" role="tab" aria-selected="false" tabindex="0" (click)="goToRegister()"
-                    (keydown.enter)="goToRegister()">
+                <span
+                    class="inactive"
+                    role="tab"
+                    aria-selected="false"
+                    tabindex="0"
+                    (click)="goToRegister()"
+                    (keydown.enter)="goToRegister()"
+                >
                     Registro
                 </span>
             </nav>
 
-            <form aria-label="Formulario de inicio" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <form
+                aria-label="Formulario de inicio"
+                [formGroup]="loginForm"
+                (ngSubmit)="onSubmit()"
+            >
                 <div class="wrapper">
-                    <label for="email" class="sr-only">Correo Electrónico</label>
-                    <span class="material-symbols-outlined" aria-hidden="true">mail</span>
-                    <input id="email" type="email" placeholder="Correo Electrónico" required autocomplete="email"
-                        aria-required="true" formControlName="email" />
+                    <label for="email" class="sr-only"
+                        >Correo Electrónico</label
+                    >
+                    <span class="material-symbols-outlined" aria-hidden="true"
+                        >mail</span
+                    >
+                    <input
+                        id="email"
+                        type="email"
+                        placeholder="Correo Electrónico"
+                        required
+                        autocomplete="email"
+                        aria-required="true"
+                        formControlName="email"
+                    />
                 </div>
-                <div *ngIf="
+                <div
+                    *ngIf="
                         loginForm.get('email')?.touched &&
                         loginForm.get('email')?.invalid
-                    " class="error" role="alert" tabindex="0">
+                    "
+                    class="error"
+                    role="alert"
+                    tabindex="0"
+                >
                     <div *ngIf="loginForm.get('email')?.errors?.['required']">
                         Este campo es obligatorio.
                     </div>
@@ -46,72 +93,79 @@
                 <div>
                     <div class="wrapper">
                         <label for="password" class="sr-only">Contraseña</label>
-                        <span class="material-symbols-outlined" aria-hidden="true">lock</span>
-                        <input id="password" [type]="showPassword ? 'text' : 'password'" placeholder="Contraseña"
-                            required aria-required="true" autocomplete="new-password" formControlName="password" />
-                        <button type="button" class="toggle-password" [attr.aria-pressed]="showPassword"
+                        <span
+                            class="material-symbols-outlined"
+                            aria-hidden="true"
+                            >lock</span
+                        >
+                        <input
+                            id="password"
+                            [type]="showPassword ? 'text' : 'password'"
+                            placeholder="Contraseña"
+                            required
+                            aria-required="true"
+                            autocomplete="new-password"
+                            formControlName="password"
+                        />
+                        <button
+                            type="button"
+                            class="toggle-password"
+                            [attr.aria-pressed]="showPassword"
                             [attr.aria-label]="
                                 showPassword
                                     ? 'Ocultar contraseña'
                                     : 'Mostrar contraseña'
-                            " (click)="togglePassword()">
+                            "
+                            (click)="togglePassword()"
+                        >
                             <span class="material-symbols-outlined">
                                 {{
-                                showPassword
-                                ? "visibility_off"
-                                : "visibility"
+                                    showPassword
+                                        ? "visibility_off"
+                                        : "visibility"
                                 }}
                             </span>
                         </button>
                     </div>
-                    <div *ngIf="
+                    <div
+                        *ngIf="
                             loginForm.get('password')?.touched &&
                             loginForm.get('password')?.invalid
-                        " class="error" role="alert" tabindex="0">
-                        <div *ngIf="loginForm.get('password')?.errors?.['required']">
+                        "
+                        class="error"
+                        role="alert"
+                        tabindex="0"
+                    >
+                        <div
+                            *ngIf="loginForm.get('password')?.errors?.['required']"
+                        >
                             Este campo es obligatorio.
                         </div>
                     </div>
                 </div>
 
                 <div class="options">
-                    <input id="remember" name="remember" type="checkbox" formControlName="remember"
-                        aria-label="Recordar Contraseña" />
+                    <input
+                        id="remember"
+                        name="remember"
+                        type="checkbox"
+                        formControlName="remember"
+                        aria-label="Recordar Contraseña"
+                    />
                     <label for="remember">Recordar contraseña</label>
                 </div>
 
-                <a target="_blank" rel="noopener noreferrer" class="forgot-password" href="/recover-password">¿Has
-                    olvidado tu contraseña?</a>
+                <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="forgot-password"
+                    href="/recover-password"
+                    >¿Has olvidado tu contraseña?</a
+                >
 
                 <button type="submit" class="button login-button">
                     Iniciar
                 </button>
-
-                <button type="button" class="gsi-material-button" aria-label="Iniciar sesión con Google">
-                    <div class="gsi-material-button-state"></div>
-                    <div class="gsi-material-button-content-wrapper">
-                        <div class="gsi-material-button-icon">
-                            <svg tabindex="0" aria-label="Icono de Google" version="1.1"
-                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"
-                                xmlns:xlink="http://www.w3.org/1999/xlink" style="display: block">
-                                <path fill="#EA4335"
-                                    d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z">
-                                </path>
-                                <path fill="#4285F4"
-                                    d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z">
-                                </path>
-                                <path fill="#FBBC05"
-                                    d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z">
-                                </path>
-                                <path fill="#34A853"
-                                    d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z">
-                                </path>
-                                <path fill="none" d="M0 0h48v48H0z"></path>
-                            </svg>
-                        </div>
-                    </div>
-                </button>
-                <span class="google-info" tabindex="0">Inicia Sesión con Google</span>
             </form>
         </div>
     </section>

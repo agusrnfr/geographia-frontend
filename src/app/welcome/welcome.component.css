@@ -18,7 +18,7 @@
     left: 0;
     height: 100%;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.6); /* Más contraste */
+    background-color: rgba(0, 0, 0, 0.6);
     z-index: 1;
 }
 
@@ -26,13 +26,13 @@
     z-index: 2;
     text-align: center;
     color: white;
-    padding: 1.5rem;
+    padding: 1rem;
     max-width: 960px;
     width: 100%;
 }
 
 .app-title {
-    font-size: 3.5em;
+    font-size: 2em;
     color: white;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.85);
     font-family: "Montserrat", sans-serif;
@@ -40,9 +40,9 @@
 }
 
 .subtitle {
-    font-size: 1.25em;
+    font-size: 1em;
     font-weight: 300;
-    line-height: 1.8;
+    line-height: 1.6;
     margin-bottom: 1.5rem;
     color: white;
     font-family: "Montserrat", sans-serif;
@@ -50,10 +50,10 @@
 }
 
 .branding {
-    font-size: 1.1em;
+    font-size: 1em;
     font-style: italic;
     color: #e0e0e0;
-    margin-top: 2rem;
+    margin-top: 1.5rem;
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
 }
 
@@ -64,17 +64,16 @@
     padding: 4px 8px;
     border-radius: 6px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-    color: var(--color-secundario);
 }
 
 .button-welcome {
-    padding: 12px 24px;
+    padding: 10px 20px;
     background-color: var(--color-secundario);
     font-weight: 700;
     margin-top: 2rem;
     border: none;
     border-radius: 16px;
-    font-size: 1.5em;
+    font-size: 1em;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
@@ -93,7 +92,8 @@
     outline-offset: 2px;
 }
 
-@media (max-width: 900px) {
+/* RESPONSIVE ESCALADO */
+@media (min-width: 768px) {
     .app-title {
         font-size: 2.5em;
     }
@@ -104,29 +104,56 @@
 
     .branding {
         font-size: 1em;
-        margin-top: 1.5rem;
+        margin-top: 1.8rem;
     }
 
     .button-welcome {
         font-size: 1.2em;
-        padding: 10px 20px;
-    }
-}
-
-@media (max-width: 900px) {
-    .app-title {
-        font-size: 2em;
-    }
-
-    .subtitle {
-        font-size: 1em;
-    }
-
-    .button-welcome {
-        font-size: 1em;
+        padding: 12px 24px;
     }
 
     .content {
-        padding: 1rem;
+        padding: 1.25rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .app-title {
+        font-size: 3em;
+    }
+
+    .subtitle {
+        font-size: 1.2em;
+    }
+
+    .branding {
+        font-size: 1.05em;
+        margin-top: 2rem;
+    }
+
+    .button-welcome {
+        font-size: 1.4em;
+    }
+
+    .content {
+        padding: 1.5rem;
+    }
+}
+
+@media (min-width: 1440px) {
+    .app-title {
+        font-size: 3.5em;
+    }
+
+    .subtitle {
+        font-size: 1.25em;
+    }
+
+    .branding {
+        font-size: 1.1em;
+    }
+
+    .button-welcome {
+        font-size: 1.5em;
     }
 }
