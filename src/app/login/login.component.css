@@ -8,6 +8,8 @@
     position: absolute;
     width: 100%;
     height: 80px;
+    background-color: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(4px);
 }
 
 .header .company-name {
@@ -19,13 +21,6 @@
     font-weight: bold;
     color: var(--color-primario);
     cursor: pointer;
-}
-
-.header .logo {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    width: 20%;
 }
 
 .form-content {
@@ -175,6 +170,28 @@ input {
 
 a:hover {
     text-decoration: underline;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #a6a6a6;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #a6a6a6;
+}
+
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #a6a6a6 transparent;
 }
 
 @media (min-width: 768px) {

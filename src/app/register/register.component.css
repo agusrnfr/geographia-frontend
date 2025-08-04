@@ -145,6 +145,28 @@ input {
     margin: 4px 0 6px 0;
 }
 
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #a6a6a6;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #a6a6a6;
+}
+
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #a6a6a6 transparent;
+}
+
 @media (min-width: 768px) {
     .register-container {
         display: flex;
