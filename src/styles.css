@@ -125,7 +125,7 @@ p {
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
-.modal:focus {
+.modal:focus-visible {
     outline: 2px solid var(--color-primario);
 }
 

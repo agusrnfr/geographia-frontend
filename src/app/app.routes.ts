@@ -15,6 +15,7 @@ import { ListLocationsComponent } from './list-locations/list-locations.componen
 import { RecoverPasswordComponent } from './recover-password/recover-password.component';
 import { DeleteLocationConfirmationComponent } from './delete-location-confirmation/delete-location-confirmation.component';
 import { RateLocationComponent } from './rate-location/rate-location.component';
+import { TermsAndPrivacyComponent } from './terms-and-privacy/terms-and-privacy.component';
 
 export const routes: Routes = [
     {
@@ -32,6 +33,10 @@ export const routes: Routes = [
     {
         path: 'recover-password',
         component: RecoverPasswordComponent,
+    },
+    {
+        path: 'terms-and-privacy',
+        component: TermsAndPrivacyComponent,
     },
     {
         path: 'map',

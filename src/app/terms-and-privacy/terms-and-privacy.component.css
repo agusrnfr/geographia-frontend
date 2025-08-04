@@ -1,0 +1,193 @@
+:host {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100dvh;
+    width: 100vw;
+    position: relative;
+    background-image: url("../../../public/map.jpeg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    backdrop-filter: blur(4px);
+    overflow: hidden;
+}
+
+:host::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+}
+
+.terms-container {
+    background-color: white;
+    color: var(--color-texto);
+    font-family: "Montserrat", sans-serif;
+    padding: 1.5rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    max-height: 100vh;
+    min-height: 100vh;
+    overflow-y: auto;
+    max-width: 95%;
+    width: 100%;
+    z-index: 2;
+}
+
+.terms-container::-webkit-scrollbar {
+    width: 6px;
+}
+
+.terms-container::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+.terms-container::-webkit-scrollbar-thumb {
+    background-color: #a6a6a6;
+    border-radius: 4px;
+}
+
+.terms-container::-webkit-scrollbar-thumb:hover {
+    background-color: transparent;
+}
+
+.terms-container {
+    scrollbar-width: thin;
+    scrollbar-color: #a6a6a6 transparent;
+}
+
+.terms-container h1 {
+    font-size: 1.75em;
+    font-weight: 700;
+    color: var(--color-primario);
+    margin-bottom: 1rem;
+}
+
+.terms-container h3 {
+    font-size: 1.25em;
+    font-weight: 600;
+    color: var(--color-primario);
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.terms-container h4 {
+    font-size: 1.1em;
+    margin-top: 1.25rem;
+    margin-bottom: 0.5rem;
+    color: var(--color-primario);
+}
+
+.terms-container p,
+.terms-container li {
+    font-size: 0.95em;
+    line-height: 1.6;
+    margin-bottom: 0.75rem;
+}
+
+.terms-container ul {
+    list-style-type: disc;
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.terms-container a {
+    color: var(--color-button);
+    text-decoration: underline;
+}
+
+.terms-container hr {
+    margin: 2.5rem 0;
+    border: none;
+    border-top: 1px solid #ccc;
+}
+
+.subtitle {
+    font-size: 0.9em;
+    color: var(--color-subtitulos);
+    margin-bottom: 1rem;
+}
+
+@media (min-width: 768px) {
+    .terms-container {
+        padding: 2rem;
+        max-width: 80%;
+    }
+
+    .terms-container h1 {
+        font-size: 2em;
+    }
+
+    .terms-container h3 {
+        font-size: 1.5em;
+    }
+
+    .terms-container h4 {
+        font-size: 1.2em;
+    }
+
+    .terms-container p,
+    .terms-container li {
+        font-size: 1em;
+    }
+
+    .subtitle {
+        font-size: 1em;
+    }
+}
+
+@media (min-width: 1024px) {
+    .terms-container {
+        max-width: 70%;
+    }
+
+    .terms-container h1 {
+        font-size: 2.25em;
+    }
+
+    .terms-container h3 {
+        font-size: 1.75em;
+    }
+
+    .terms-container h4 {
+        font-size: 1.3em;
+    }
+
+    .terms-container p,
+    .terms-container li {
+        font-size: 1.05em;
+    }
+
+    .subtitle {
+        font-size: 1.05em;
+    }
+}
+
+@media (min-width: 1440px) {
+    .terms-container {
+        max-width: 60%;
+    }
+
+    .terms-container h1 {
+        font-size: 2.5em;
+    }
+
+    .terms-container h3 {
+        font-size: 2em;
+    }
+
+    .terms-container h4 {
+        font-size: 1.4em;
+    }
+
+    .terms-container p,
+    .terms-container li {
+        font-size: 1.1em;
+    }
+
+    .subtitle {
+        font-size: 1.1em;
+    }
+}
