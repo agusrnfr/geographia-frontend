@@ -137,12 +137,11 @@ input {
     display: none;
 }
 
-.google-info {
-    font-size: 0.9em;
-    font-family: "Montserrat", sans-serif;
-    color: var(--color-subtitulos);
-    text-align: center;
-    margin: 4px 0 6px 0;
+.register-image-section img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
 
 ::-webkit-scrollbar {
@@ -172,20 +171,17 @@ input {
         display: flex;
     }
 
-    .login-container {
-        display: flex;
-    }
-
-    .login-image-section {
+    .register-image-section {
         flex: 1.1;
         position: sticky;
         top: 0;
         height: 100vh;
         overflow: hidden;
         display: block;
+        cursor: pointer;
     }
 
-    .login-button {
+    .register-button {
         margin-top: 72px;
     }
 
@@ -196,22 +192,6 @@ input {
     .options {
         margin-top: 24px;
         margin-bottom: 48px;
-    }
-
-    .register-image-section {
-        flex: 1.1;
-        position: sticky;
-        top: 0;
-        height: 100vh;
-        overflow: hidden;
-        display: block;
-    }
-
-    .register-image-section img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
     }
 
     .name-fields {

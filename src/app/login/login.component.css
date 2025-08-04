@@ -160,14 +160,6 @@ input {
     display: block;
 }
 
-.google-info {
-    font-size: 0.9em;
-    font-family: "Montserrat", sans-serif;
-    color: var(--color-subtitulos);
-    text-align: center;
-    margin: 4px 0 6px 0;
-}
-
 a:hover {
     text-decoration: underline;
 }
@@ -206,6 +198,7 @@ a:hover {
         height: 100vh;
         overflow: hidden;
         display: block;
+        cursor: pointer;
     }
 
     .login-button {
