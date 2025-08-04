@@ -48,7 +48,7 @@
 
 .comments-list {
     flex: 1;
-    overflow-y: scroll;
+    overflow-y: auto;
     -webkit-overflow-scrolling: touch;
     padding-right: 8px;
     max-height: 600px;
@@ -387,6 +387,28 @@ span {
     outline: 2px solid var(--color-primario);
     outline-offset: 2px;
     background-color: #eaeaea;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #a6a6a6;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #a6a6a6;
+}
+
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #a6a6a6 transparent;
 }
 
 @media (min-width: 768px) {
