@@ -40,7 +40,9 @@
                             loadUserProfile(userCreator?.id || -1, $event)
                         "
                         (mouseleave)="hideUserProfileImmediately()"
-                        (focus)="loadUserProfile(userCreator?.id || -1, $event)"
+                        (keydown.enter)="
+                            loadUserProfile(userCreator?.id || -1, $event)
+                        "
                         [attr.aria-label]="
                             'Ver perfil de ' +
                             userCreator?.first_name +
@@ -183,8 +185,10 @@
                     <button
                         class="profile-button"
                         (mouseenter)="loadUserProfile(c.UserId, $event)"
-                        (focus)="loadUserProfile(c.UserId, $event)"
                         (mouseleave)="hideUserProfileImmediately()"
+                        (keydown.enter)="
+                            loadUserProfile(c.UserId || -1, $event)
+                        "
                         tabindex="0"
                         [attr.aria-label]="
                             'Ver perfil de ' +
