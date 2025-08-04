@@ -85,7 +85,7 @@ app-profile-icon {
 
 app-login-button {
     position: absolute;
-    top: 15px;
+    top: 20px;
     right: 15px;
     z-index: 1000;
 }
@@ -207,7 +207,7 @@ app-button-add-location {
     }
 
     app-map-types-list {
-        top: 15px;
+        top: 18px;
         left: 15px;
     }
 
@@ -219,6 +219,10 @@ app-button-add-location {
         left: 50%;
         transform: translateX(-50%);
         z-index: 1000;
+    }
+
+    app-login-button {
+        top: 28px;
     }
 }
 
