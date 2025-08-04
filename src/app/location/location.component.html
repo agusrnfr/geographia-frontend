@@ -36,6 +36,7 @@
                     </span>
                     <button
                         class="profile-button"
+                        (click)="loadUserProfile(userCreator?.id || -1, $event)"
                         (mouseenter)="
                             loadUserProfile(userCreator?.id || -1, $event)
                         "
@@ -184,6 +185,7 @@
                 <div class="comment" *ngFor="let c of comments">
                     <button
                         class="profile-button"
+                        (click)="loadUserProfile(c.UserId, $event)"
                         (mouseenter)="loadUserProfile(c.UserId, $event)"
                         (mouseleave)="hideUserProfileImmediately()"
                         (keydown.enter)="
