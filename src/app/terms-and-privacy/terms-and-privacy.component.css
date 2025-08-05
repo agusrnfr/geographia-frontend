@@ -58,21 +58,11 @@
     scrollbar-color: #a6a6a6 transparent;
 }
 
-.terms-container:focus {
-    outline: unset;
-}
-
-terms-container:focus-visible {
-    outline: 3px solid var(--color-primario);
-    outline-offset: 2px;
-    border-radius: 4px;
-}
-
 .terms-container h1 {
     font-size: 1.75em;
     font-weight: 700;
     color: var(--color-primario);
-    margin-bottom: 1rem;
+    margin: 0.5rem 0 1rem 0;
 }
 
 .terms-container h3 {
