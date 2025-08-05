@@ -13,7 +13,10 @@
         tabindex="0"
     >
         <img
-            [src]="this.user?.profile_image_url"
+            [src]="
+                this.user?.profile_image_url ||
+                this.apiUrl + '/uploads/default_profile.jpg'
+            "
             [alt]="
                 'Icono de usuario de ' +
                 this.user?.first_name +
@@ -35,7 +38,10 @@
     >
         <div class="profile-header">
             <img
-                [src]="this.user?.profile_image_url"
+                [src]="
+                    this.user?.profile_image_url ||
+                    this.apiUrl + '/uploads/default_profile.jpg'
+                "
                 [alt]="
                     'Avatar de usuario de ' +
                     this.user?.first_name +
