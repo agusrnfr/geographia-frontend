@@ -2,8 +2,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100dvh;
-    width: 100vw;
     position: relative;
     background-image: url("../../../public/map.jpeg");
     background-size: cover;
@@ -26,14 +24,14 @@
     background-color: white;
     color: var(--color-texto);
     font-family: "Montserrat", sans-serif;
-    padding: 1.5rem;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-    max-height: 100vh;
     min-height: 100vh;
     overflow-y: auto;
     max-width: 95%;
     width: 100%;
     z-index: 2;
+    padding: 1.5rem;
+    box-sizing: border-box;
 }
 
 .terms-container::-webkit-scrollbar {
@@ -62,7 +60,7 @@
     font-size: 1.75em;
     font-weight: 700;
     color: var(--color-primario);
-    margin: 0.5rem 0 1rem 0;
+    margin-bottom: 1rem;
 }
 
 .terms-container h3 {
