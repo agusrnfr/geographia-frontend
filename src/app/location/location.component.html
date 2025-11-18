@@ -276,7 +276,7 @@
             position: 'fixed',
             left: resumeX + 'px',
             top: resumeY + 56 + 'px',
-            transform: 'translateX(-50%)',
+            transform: resumeTransform,
             zIndex: 3000
         }"
         cdkTrapFocus
@@ -286,6 +286,25 @@
         aria-labelledby="profile-resume-title"
     >
         <div class="modal-resume">
+            <button
+                class="close-profile-resume"
+                (click)="hideUserProfile()"
+                (keydown.enter)="hideUserProfile()"
+                aria-label="Cerrar perfil"
+                style="
+                    position: absolute;
+                    top: 12px;
+                    right: 24px;
+                    z-index: 3100;
+                    background: none;
+                    border: none;
+                    font-size: 1.5rem;
+                    cursor: pointer;
+                "
+                tabindex="0"
+            >
+                ×
+            </button>
             <div class="profile-header">
                 <img
                     [src]="hoveredUser.profile_image_url"

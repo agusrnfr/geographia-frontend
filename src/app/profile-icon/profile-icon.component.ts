@@ -104,4 +104,8 @@ export class ProfileIconComponent {
             { outlets: { popup: ['deleteConfirmation'] } },
         ]);
     }
+
+    preferences() {
+        this.router.navigate(['/map', { outlets: { popup: ['preferences'] } }]);
+    }
 }

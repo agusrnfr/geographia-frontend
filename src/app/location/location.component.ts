@@ -67,6 +67,7 @@ export class LocationComponent implements OnInit {
     hoveredUser: User | null = null;
     resumeX = 0;
     resumeY = 0;
+    resumeTransform = '';
 
     comments: Comment[] = [];
 
@@ -401,10 +402,17 @@ export class LocationComponent implements OnInit {
         if (this.handleProfileHover) clearTimeout(this.handleProfileHover);
 
         this.handleProfileHover = setTimeout(() => {
-            const target = event.target as HTMLElement;
-            const rect = target.getBoundingClientRect();
-            this.resumeX = rect.left + rect.width / 2;
-            this.resumeY = rect.top;
+            if (window.innerWidth < 1024) {
+                this.resumeX = window.innerWidth / 2;
+                this.resumeY = window.innerHeight / 2;
+                this.resumeTransform = 'translate(-50%, -50%)';
+            } else {
+                const target = event.target as HTMLElement;
+                const rect = target.getBoundingClientRect();
+                this.resumeX = rect.left + rect.width / 2;
+                this.resumeY = rect.top;
+                this.resumeTransform = 'translateX(-50%)';
+            }
 
             this.userService.getUserById(userId).subscribe((user) => {
                 user.createdAt = new Date(user.createdAt);
