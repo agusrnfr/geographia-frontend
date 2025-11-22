@@ -49,16 +49,16 @@
     z-index: 10;
 }
 
-.button-accesible:hover .button-label {
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-}
-
 @media (min-width: 768px) {
     .button-accesible span.material-symbols-outlined {
         font-size: 36px;
     }
+
+    .button-accesible:hover .button-label {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
 }
 
 @media (min-width: 1024px) {

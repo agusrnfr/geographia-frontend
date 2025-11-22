@@ -191,12 +191,6 @@
     z-index: 10;
 }
 
-.profile-container:hover .profile-label,
-.profile-label.visible {
-    opacity: 1;
-    visibility: visible;
-}
-
 @media (min-width: 768px) {
     .icon {
         width: 65px;
@@ -222,6 +216,12 @@
     }
     .delete {
         font-size: 1.85em;
+    }
+
+    .profile-container:hover .profile-label,
+    .profile-label.visible {
+        opacity: 1;
+        visibility: visible;
     }
 }
 

@@ -67,18 +67,40 @@
     display: inline-block;
 }
 
-.map-filter-wrapper:hover .map-filter-label,
-.map-filter-label.visible {
-    opacity: 1;
-    visibility: visible;
+.map-filter-label {
+    position: absolute;
+    left: 110%;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #ffffff;
+    border: 1px solid #d8d8d8;
+    color: var(--color-subtitulos);
+    padding: 6px 12px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 1em;
+    font-weight: 500;
+    border-radius: 6px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
+    margin-left: 8px;
+    pointer-events: none;
+    z-index: 10;
 }
-
 @media (min-width: 768px) {
     .manage_search {
         font-size: 32px;
     }
     .map-types {
         font-size: 1.15em;
+    }
+
+    .map-filter-wrapper:hover .map-filter-label,
+    .map-filter-label.visible {
+        opacity: 1;
+        visibility: visible;
     }
 }
 

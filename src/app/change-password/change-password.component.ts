@@ -40,6 +40,9 @@ import Swal from 'sweetalert2';
     ],
 })
 export class ChangePasswordComponent {
+    showPassword = false;
+    showNewPassword = false;
+    showConfirmPassword = false;
     changePasswordForm: FormGroup;
     submitted = false;
 
@@ -67,6 +70,18 @@ export class ChangePasswordComponent {
         setTimeout(() => {
             this.firstFocusElement.nativeElement.focus();
         }, 0);
+    }
+
+    togglePassword() {
+        this.showPassword = !this.showPassword;
+    }
+
+    toggleNewPassword() {
+        this.showNewPassword = !this.showNewPassword;
+    }
+
+    toggleConfirmPassword() {
+        this.showConfirmPassword = !this.showConfirmPassword;
     }
 
     matchPasswordsValidator(group: AbstractControl): ValidationErrors | null {
