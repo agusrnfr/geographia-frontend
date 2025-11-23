@@ -218,7 +218,7 @@
         font-size: 1.85em;
     }
 
-    .profile-container:hover .profile-label,
+    .icon-button:hover .profile-label,
     .profile-label.visible {
         opacity: 1;
         visibility: visible;

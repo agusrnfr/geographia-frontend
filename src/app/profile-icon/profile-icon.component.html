@@ -1,33 +1,35 @@
 <div class="profile-container">
-    <button
-        class="icon"
-        (click)="toggleMenu()"
-        aria-haspopup="true"
-        [attr.aria-expanded]="visibleMenu"
-        [attr.aria-label]="
-            'Abrir menú de perfil de usuario ' +
-            this.user?.first_name +
-            ' ' +
-            this.user?.last_name
-        "
-        tabindex="0"
-    >
-        <img
-            [src]="
-                this.user?.profile_image_url ||
-                this.apiUrl + '/uploads/default_profile.jpg'
-            "
-            [alt]="
-                'Icono de usuario de ' +
+    <div class="icon-button">
+        <button
+            class="icon"
+            (click)="toggleMenu()"
+            aria-haspopup="true"
+            [attr.aria-expanded]="visibleMenu"
+            [attr.aria-label]="
+                'Abrir menú de perfil de usuario ' +
                 this.user?.first_name +
                 ' ' +
                 this.user?.last_name
             "
-            class="icon"
-        />
-    </button>
+            tabindex="0"
+        >
+            <img
+                [src]="
+                    this.user?.profile_image_url ||
+                    this.apiUrl + '/uploads/default_profile.jpg'
+                "
+                [alt]="
+                    'Icono de usuario de ' +
+                    this.user?.first_name +
+                    ' ' +
+                    this.user?.last_name
+                "
+                class="icon"
+            />
+        </button>
 
-    <div class="profile-label" aria-hidden="true">Perfil de usuario</div>
+        <div class="profile-label" aria-hidden="true">Perfil de usuario</div>
+    </div>
 
     <div
         class="profile-menu"
